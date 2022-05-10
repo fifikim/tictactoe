@@ -1,13 +1,8 @@
 <h1 align="center">Tic Tac Toe</h1>
 
-<div>
-<p> This Tic Tac Toe game is a command line application built in Ruby. 
-</p>
-<p>
-The initial functionality permits gameplay between two human players. The program will exit when gameplay ends: either when a player has won, or if the game has reached a draw.
-<p>
+This Tic Tac Toe game is a command line application built in Ruby.
 
-</div>
+The initial functionality permits gameplay between two human players. The program will exit when gameplay ends: either when a player has won, or if the game has reached a draw.
 
 ## Table of Contents
 
