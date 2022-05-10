@@ -65,7 +65,13 @@ ruby lib/tictactoe.rb
 ```
 
 ### Instructions
-- TBA
+Player 1 moves first and marks spaces with an "X". Player 2 marks with an "O".
+
+Enter the number (1-9) corresponding to the space that you want to mark.
+
+To win, mark off 3 adjacent spaces (horizontal, vertical, or diagonal) with your marker.
+
+If there are no available spaces and no player has won, the game will end in a draw.
 
 <br>
 

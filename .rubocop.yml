@@ -2,3 +2,4 @@ AllCops:
   NewCops: enable
   Exclude:
     - Guardfile
+  SuggestExtensions: false
