@@ -61,7 +61,7 @@ bundle exec guard
 ### Launch the program <a name = "launching"></a>
 From program directory:
 ```
-ruby lib/tictactoe.rb
+ruby tictactoe.sh
 ```
 
 ### Instructions

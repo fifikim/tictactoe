@@ -3,3 +3,5 @@ AllCops:
   Exclude:
     - Guardfile
   SuggestExtensions: false
+Metrics/AbcSize:
+  Max: 25
