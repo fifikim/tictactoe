@@ -51,7 +51,6 @@ bundle exec rspec
 
 To automate the test suite:
 ```
-bundle exec guard init rspec
 bundle exec guard
 ``` 
 <br>
@@ -61,13 +60,18 @@ bundle exec guard
 ### Launch the program <a name = "launching"></a>
 From program directory:
 ```
-ruby lib/tictactoe.rb
+ruby tictactoe.sh
 ```
 
 ### Instructions
-- TBA
 
-<br>
+Enter the number (1-9) of the space on the board where you want to move.
+
+Player 1 moves first and marks their spaces with an "X". Player 2 marks with an "O".
+
+To win, claim 3 adjacent spaces in a horizontal, vertical, or diagonal line.
+
+If there are no free spaces and no player has won, the game will end in a draw.
 
 ## Future Implementation <a name = "future"></a>
 - Add gameplay between a human player vs. AI player

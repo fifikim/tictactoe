@@ -2,3 +2,8 @@ AllCops:
   NewCops: enable
   Exclude:
     - Guardfile
+  SuggestExtensions: false
+Metrics/AbcSize:
+  Max: 25
+Style/Documentation: 
+  Enabled: false
