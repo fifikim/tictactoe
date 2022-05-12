@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Holds the state of the board during a game
 class Board
   attr_accessor :spaces
 

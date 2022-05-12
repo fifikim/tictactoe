@@ -51,7 +51,6 @@ bundle exec rspec
 
 To automate the test suite:
 ```
-bundle exec guard init rspec
 bundle exec guard
 ``` 
 <br>
@@ -73,8 +72,6 @@ Player 1 moves first and marks their spaces with an "X". Player 2 marks with an 
 To win, claim 3 adjacent spaces in a horizontal, vertical, or diagonal line.
 
 If there are no free spaces and no player has won, the game will end in a draw.
-
-<br>
 
 ## Future Implementation <a name = "future"></a>
 - Add gameplay between a human player vs. AI player

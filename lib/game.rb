@@ -2,7 +2,6 @@
 
 require_relative 'board'
 
-# Game controls
 class Game
   attr_accessor :board
 

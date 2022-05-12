@@ -2,7 +2,6 @@
 
 require_relative 'game'
 
-# Main program execution
 class Main
   def run
     display_instructions
