@@ -11,11 +11,14 @@ describe 'Game' do
     end
 
     describe '.play' do
-      it 'displays a fully numbered game board' do
+      it 'displays a fully numbered game board and indicates player 1 turn' do
         expect do
           game.play
-        end.to output(" 1 | 2 | 3\n---|---|---\n 4 | 5 | 6\n---|---|---\n 7 | 8 | 9\n").to_stdout
+        end.to output(" 1 | 2 | 3\n---|---|---\n 4 | 5 | 6\n---|---|---\n 7 | 8 | 9\n\nPlayer 1's move:\n").to_stdout
       end
     end
+  end
+
+  context 'when a player takes a turn' do
   end
 end
