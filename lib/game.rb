@@ -1,18 +1,35 @@
 # frozen_string_literal: true
 
-require_relative 'board'
-require_relative 'players'
+require_relative 'turn'
 
 class Game
-  attr_accessor :board, :players
+  attr_accessor :board, :players, :current_player, :console
 
-  def initialize(board = Board.new, players = Players.new)
+  def initialize(board, players, console)
     @board = board
     @players = players
+    @console = console
   end
 
   def play
-    puts board.draw
-    puts "\nPlayer #{players.current_player}'s move:"
+    until game_over?
+      take_turn
+    end
+  end
+
+  private
+
+  def take_turn
+    turn = Turn.new(current_player, board, console)
+    turn.take
+    players.switch
+  end
+  
+  def current_player
+    players.current_player
+  end
+
+  def game_over?
+    false
   end
 end

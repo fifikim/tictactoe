@@ -3,25 +3,38 @@
 class Board
   attr_accessor :spaces
 
+  COMBOS = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ].freeze
+
   def initialize(spaces = (1..9).to_a)
     @spaces = spaces
   end
 
-  def draw
-    " #{spaces[0]} | #{spaces[1]} | #{spaces[2]}\n" \
-      "---|---|---\n" \
-      " #{spaces[3]} | #{spaces[4]} | #{spaces[5]}\n" \
-      "---|---|---\n" \
-      " #{spaces[6]} | #{spaces[7]} | #{spaces[8]}\n"
+  def record_move(player, index)
+    spaces[index] = marker(player)
   end
 
-  def record_move(player, chosen_space)
-    spaces[chosen_space - 1] = marker(player) 
+  def winning_combo?(player)
+    COMBOS.each do |combo|
+      return combo.all? { |space| spaces[space] == marker(player) }
+    end
+  end
+
+  def full?
+    spaces.none? { |space| space.is_a? Integer }
   end
 
   private
 
   def marker(player)
-    player == 1 ? "X" : "O"
+    player == 1 ? 'X' : 'O'
   end
 end

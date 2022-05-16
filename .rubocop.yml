@@ -5,5 +5,7 @@ AllCops:
   SuggestExtensions: false
 Metrics/AbcSize:
   Max: 25
+Metrics/BlockLength:
+  Max: 30
 Style/Documentation: 
   Enabled: false
