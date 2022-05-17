@@ -15,5 +15,6 @@ Layout/LineLength:
 Lint/UselessAssignment:
   Exclude: 
     - ./lib/main.rb
+    - ./spec/game_spec.rb
 Style/Documentation: 
   Enabled: false
