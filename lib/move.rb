@@ -4,8 +4,6 @@ require_relative 'console'
 require_relative 'board'
 
 class Move
-  attr_reader :current_player, :board, :console
-
   def initialize(current_player, board, console)
     @current_player = current_player
     @board = board
@@ -13,7 +11,7 @@ class Move
   end
 
   def select_space
-    console.output("\nPlayer #{current_player}'s move:")
+    @console.output("\nPlayer #{@current_player}'s move:")
     input = gets.strip
     validate_selection(input)
   end
@@ -24,13 +22,13 @@ class Move
     index = char.to_i - 1
 
     if invalid? char
-      console.output("Invalid character! Please select a number from 1-9.\n\n")
+      @console.output("Invalid character! Please select a number from 1-9.\n\n")
       select_space
     elsif occupied? index
-      console.output("Invalid move! Please select a free space.\n\n")
+      @console.output("Invalid move! Please select a free space.\n\n")
       select_space
     else
-      board.record_move(current_player, index)
+      @board.record_move(@current_player, index)
     end
   end
 
@@ -39,6 +37,6 @@ class Move
   end
 
   def occupied?(index)
-    !board.spaces[index].is_a? Integer
+    !@board.spaces[index].is_a? Integer
   end
 end
