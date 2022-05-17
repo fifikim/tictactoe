@@ -8,12 +8,14 @@ describe Move do
     expect(move).to be_an_instance_of(Move)
   end
 
-  describe '.take' do
-    it 'sends display_board' do
-      # TODO: stub this
+  describe '.select_space' do
+    it 'sends console.output' do
     end
 
-    it 'sends select_space' do
+    it 'takes in player\'s input' do
+    end
+
+    it 'sends validate_selection' do
     end
   end
 end

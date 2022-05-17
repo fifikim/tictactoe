@@ -16,8 +16,5 @@ describe Game do
 
     it 'loops until game_over' do
     end
-
-    it 'sends console.goodbye when game is over' do
-    end
   end
 end

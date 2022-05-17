@@ -14,7 +14,6 @@ class Game
 
   def play
     take_turn until game_over
-    console.output('Thanks for playing! Goodbye.')
   end
 
   private
@@ -24,30 +23,22 @@ class Game
   end
 
   def take_turn
+    console.board(board)
     move = Move.new(current_player, board, console)
-    move.take
+    move.select_space
     check_over
   end
 
   def check_over
-    if won?
+    if board.won? current_player
       end_game
       console.output("Game over! Player #{current_player} wins!")
-    elsif draw?
+    elsif board.full?
       end_game
       console.output("Game over! It's a draw!")
     else
       players.switch
     end
-  end
-
-  def won?
-    player = current_player
-    board.won?(player)
-  end
-
-  def draw?
-    board.full?
   end
 
   def end_game

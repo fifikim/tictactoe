@@ -4,10 +4,13 @@ require 'main'
 
 describe Main do
   describe '.run' do
-    it 'sends display_instructions' do
+    it 'sends console.instructions' do
     end
 
     it 'sends start_game' do
+    end
+
+    it 'sends console.output with goodbye message after game ends' do
     end
   end
 end

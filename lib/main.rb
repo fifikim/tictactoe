@@ -13,18 +13,15 @@ class Main
   end
 
   def run
-    display_instructions
+    console.instructions
     start_game
+    console.output('Thanks for playing! Goodbye.')
   end
 
   private
 
   def start_game
-    @game = Game.new(board = Board.new, players = Players.new, console)
-    @game.play
-  end
-
-  def display_instructions
-    console.instructions
+    game = Game.new(board = Board.new, players = Players.new, console)
+    game.play
   end
 end

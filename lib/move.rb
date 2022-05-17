@@ -12,18 +12,13 @@ class Move
     @console = console
   end
 
-  def take
-    console.board(board)
-    select_space
-  end
-
-  private
-
   def select_space
     console.output("\nPlayer #{current_player}'s move:")
     input = gets.strip
     validate_selection(input)
   end
+
+  private
 
   def validate_selection(space)
     index = space.to_i - 1
