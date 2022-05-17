@@ -1,50 +1,49 @@
 # frozen_string_literal: true
 
+require_relative 'console'
 require_relative 'board'
 
 class Move
-  attr_reader :current_player, :input, :board, :index
+  attr_accessor :current_player, :board, :console
 
-  def initialize(current_player, input, board)
+  def initialize(current_player, board, console)
     @current_player = current_player
-    @input = input
     @board = board
-    @index = convert_to_index(input)
+    @console = console
   end
 
-  def record
-    if move.valid?
-      record_move
-    else
-      invalid_move
-    end
-  end
-
-  def record_move
-    board.record_move(current_player, move.index)
-  end
-
-  def invalid_move
-    message = 'Invalid move! Please try again.'
-    console.output(message)
-    take_turn
-  end
-
-  def valid?
-    valid_char? && free_space?
+  def take
+    console.board(board)
+    select_space
   end
 
   private
 
-  def valid_char?
-    /^([1-9])$/.match(input) != nil
+  def select_space
+    console.output("\nPlayer #{current_player}'s move:")
+    input = gets.strip
+    validate_selection(input)
   end
 
-  def convert_to_index(_string)
-    input.to_i - 1
+  def validate_selection(space)
+    index = space.to_i - 1
+
+    if invalid? space
+      console.output("Invalid character! Please select a number from 1-9.\n\n")
+      select_space
+    elsif occupied? index
+      console.output("Invalid move! Please select a free space.\n\n")
+      select_space
+    else
+      board.record_move(current_player, index)
+    end
   end
 
-  def free_space?
-    board.spaces[index].is_a? Integer
+  def invalid?(input)
+    /^([1-9])$/.match(input).nil?
+  end
+
+  def occupied?(index)
+    !board.spaces[index].is_a? Integer
   end
 end

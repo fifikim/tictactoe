@@ -9,7 +9,6 @@ describe Board do
     it 'elements in the spaces array contain an integer from 1 to 9' do
       expect(board.spaces).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
     end
-
   end
 
   context 'when recording player turns' do
@@ -26,23 +25,37 @@ describe Board do
       board.record_move(2, chosen_index)
       expect(board.spaces).to eq(['X', 'O', 3, 4, 5, 6, 7, 8, 9])
     end
-
-    describe '.show' do
-      it 'redraws the board with the correct markers in the correct spaces' do
-        expect(board.show).to eq(" X | O | 3\n---|---|---\n 4 | 5 | 6\n---|---|---\n 7 | 8 | 9\n")
-      end
-    end
   end
 
-  describe '.has_winning_combo?' do
-    it 'returns true when the board contains a winning combination' do
+  describe '.won?' do
+    it 'returns true when the board contains player 1\'s marker on cells 1, 2, and 3' do
       board = Board.new(['X', 'X', 'X', 4, 5, 6, 7, 8, 9])
-      expect(board.winning_combo?(1)).to be true
+      expect(board.won?(1)).to be true
+    end
+
+    it 'returns true when the board contains player 2\'s marker on cells 1, 2, and 3' do
+      board = Board.new(['O', 'O', 'O', 4, 5, 6, 7, 8, 9])
+      expect(board.won?(2)).to be true
+    end
+
+    it 'returns true when the board contains player 1\'s marker on cells 4, 5, and 6' do
+      board = Board.new(['O', 'O', 3, 'X', 'X', 'X', 7, 8, 9])
+      expect(board.won?(1)).to be true
+    end
+
+    it 'returns true when the board contains player 2\'s marker on cells 4, 5, and 6' do
+      board = Board.new(['O', 'O', 3, 'O', 'O', 'O', 7, 8, 9])
+      expect(board.won?(2)).to be true
     end
 
     it 'returns false when the board does not contain a winning combination' do
       board = Board.new(['X', 'X', 3, 'X', 5, 6, 7, 8, 9])
-      expect(board.winning_combo?(1)).to be false
+      expect(board.won?(1)).to be false
+    end
+
+    it 'returns false when contains a winning combination for the other player' do
+      board = Board.new(['X', 'X', 'X', 4, 5, 6, 7, 8, 9])
+      expect(board.won?(2)).to be false
     end
   end
 

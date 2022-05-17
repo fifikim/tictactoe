@@ -22,10 +22,8 @@ class Board
     spaces[index] = marker(player)
   end
 
-  def winning_combo?(player)
-    COMBOS.each do |combo|
-      return combo.all? { |space| spaces[space] == marker(player) }
-    end
+  def won?(player)
+    COMBOS.any? { |combo| combo.all? { |space| spaces[space] == marker(player) } }
   end
 
   def full?

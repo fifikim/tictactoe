@@ -5,18 +5,18 @@ class Console
     puts message
   end
 
-  def print_instructions
-    output(instructions)
+  def instructions
+    output(instruction)
   end
 
-  def print_board(board)
+  def board(board)
     current_board = board_template(board.spaces)
     output(current_board)
   end
 
   private
 
-  def instructions
+  def instruction
     "TIC TAC TOE\n\n" \
       "Instructions:\n" \
       "Enter the number (1-9) of the space on the board where you want to move.\n" \
@@ -27,10 +27,10 @@ class Console
   end
 
   def board_template(board)
-    " #{board[0]} | #{board[1]} | #{board[2]}\n" \
+    "\n #{board[0]} | #{board[1]} | #{board[2]}\n" \
       "---|---|---\n" \
       " #{board[3]} | #{board[4]} | #{board[5]}\n" \
       "---|---|---\n" \
-      " #{board[6]} | #{board[7]} | #{board[8]}\n"
+      " #{board[6]} | #{board[7]} | #{board[8]}\n\n"
   end
 end

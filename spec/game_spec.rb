@@ -1,33 +1,23 @@
 # frozen_string_literal: true
 
 require 'game'
+require 'board'
+require 'players'
+require 'console'
 
 describe Game do
-  context 'when starting a new game' do
-    let(:game) { Game.new }
+  before do
+    game = Game.new(Board.new, Players.new, Console.new)
+  end
 
-    it 'initializes a game with an empty (numbered) board' do
-      expect(game.board.spaces).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  describe '.play' do
+    it 'sends take_turn' do
     end
 
-    describe '.play' do
-      it 'displays a fully numbered game board and indicates player 1 turn' do
-        expect do
-          game.play
-        end.to output(" 1 | 2 | 3\n---|---|---\n 4 | 5 | 6\n---|---|---\n 7 | 8 | 9\n\nPlayer 1's move:\n").to_stdout
-      end
+    it 'loops until game_over' do
+    end
 
-      context 'when a player takes a turn' do
-        it 'redraws the board with the previous player\'s marker in the correct space' do
-        end
-
-        it 'switches the player at the end of the turn' do
-          first_player = game.current_player
-          game.play # TODO: stub this out?
-          next_player = game.current_player
-          expect(first_player).to_not eq(next_player)
-        end
-      end
+    it 'sends console.goodbye when game is over' do
     end
   end
 end

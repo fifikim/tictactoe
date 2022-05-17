@@ -25,6 +25,6 @@ class Main
   end
 
   def display_instructions
-    console.print_instructions
+    console.instructions
   end
 end

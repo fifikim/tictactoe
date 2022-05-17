@@ -4,31 +4,16 @@ require 'move'
 
 describe Move do
   it 'creates a new object' do
-    input = '1'
-    board = Board.new([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    Move.new(1, input, board)
+    move = Move.new(1, Board.new((1..9).to_a), Console.new)
+    expect(move).to be_an_instance_of(Move)
   end
 
-  describe '.valid?' do
-    it 'returns true if move is a valid character and space is free' do
-      input = '1'
-      board = Board.new([1, 2, 3, 4, 5, 6, 7, 8, 9])
-      selection = Move.new(1, input, board)
-      expect(selection.valid?).to be true
+  describe '.take' do
+    it 'sends display_board' do
+      # TODO: stub this
     end
 
-    it 'returns false if move is a valid character and space is not free' do
-      input = '1'
-      board = Board.new(['X', 2, 3, 4, 5, 6, 7, 8, 9])
-      selection = Move.new(1, input, board)
-      expect(selection.valid?).to be false
-    end
-
-    it 'returns false if move is an invalid character' do
-      input = 'n'
-      board = Board.new([1, 2, 3, 4, 5, 6, 7, 8, 9])
-      selection = Move.new(1, input, board)
-      expect(selection.valid?).to be false
+    it 'sends select_space' do
     end
   end
 end
