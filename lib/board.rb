@@ -18,21 +18,23 @@ class Board
     @spaces = spaces
   end
 
-  def record_move(player, index)
-    spaces[index] = marker(player)
+  def invalid?(input)
+    /^([1-9])$/.match(input).nil?
+  end
+
+  def occupied?(index)
+    !spaces[index].is_a? Integer
+  end
+
+  def record_move(marker, index)
+    spaces[index] = marker
   end
 
   def won?(player)
-    COMBOS.any? { |combo| combo.all? { |space| spaces[space] == marker(player) } }
+    COMBOS.any? { |combo| combo.all? { |space| spaces[space] == player } }
   end
 
   def full?
     spaces.none? { |space| space.is_a? Integer }
-  end
-
-  private
-
-  def marker(player)
-    player == 1 ? 'X' : 'O'
   end
 end

@@ -1,13 +1,8 @@
-# frozen_string_literal: true
-
 class Players
-  attr_reader :current_player
-
-  def initialize(current_player = 1)
-    @current_player = current_player
-  end
-
-  def switch
-    @current_player = current_player == 1 ? 2 : 1
+  attr_reader :player1, :player2
+  
+  def initialize(players)
+    @player1 = players[0]
+    @player2 = players[1]
   end
 end

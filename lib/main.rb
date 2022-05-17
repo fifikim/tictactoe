@@ -3,6 +3,7 @@
 require_relative 'game'
 require_relative 'console'
 require_relative 'board'
+require_relative 'player'
 require_relative 'players'
 
 class Main
@@ -19,7 +20,8 @@ class Main
   private
 
   def start_game
-    game = Game.new(Board.new, Players.new, @console)
+    players = Players.new([Player.new('Player 1', 'X'), Player.new('Player 2', 'O')])
+    game = Game.new(Board.new, players, @console)
     game.play
   end
 end
