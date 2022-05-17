@@ -12,9 +12,11 @@ describe Game do
 
   describe '.play' do
     it 'sends take_turn' do
+      # TODO
     end
 
     it 'loops until game_over' do
+      # TODO
     end
   end
 end

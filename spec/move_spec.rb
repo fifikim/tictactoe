@@ -10,12 +10,15 @@ describe Move do
 
   describe '.select_space' do
     it 'sends console.output' do
+      # TODO
     end
 
     it 'takes in player\'s input' do
+      # TODO
     end
 
     it 'sends validate_selection' do
+      # TODO
     end
   end
 end
