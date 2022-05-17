@@ -3,7 +3,7 @@
 require_relative 'move'
 
 class Game
-  attr_accessor :board, :players, :console, :game_over
+  attr_reader :board, :players, :console, :game_over
 
   def initialize(board, players, console)
     @board = board

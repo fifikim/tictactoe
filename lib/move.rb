@@ -4,7 +4,7 @@ require_relative 'console'
 require_relative 'board'
 
 class Move
-  attr_accessor :current_player, :board, :console
+  attr_reader :current_player, :board, :console
 
   def initialize(current_player, board, console)
     @current_player = current_player
@@ -20,10 +20,10 @@ class Move
 
   private
 
-  def validate_selection(space)
-    index = space.to_i - 1
+  def validate_selection(char)
+    index = char.to_i - 1
 
-    if invalid? space
+    if invalid? char
       console.output("Invalid character! Please select a number from 1-9.\n\n")
       select_space
     elsif occupied? index

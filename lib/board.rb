@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Board
-  attr_accessor :spaces
+  attr_reader :spaces
 
   COMBOS = [
     [0, 1, 2],
