@@ -6,10 +6,6 @@ require 'players'
 require 'console'
 
 describe Game do
-  before do
-    game = Game.new(Board.new, Players.new, Console.new)
-  end
-
   describe '.play' do
     it 'sends take_turn' do
       # TODO

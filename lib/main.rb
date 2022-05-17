@@ -21,7 +21,7 @@ class Main
   private
 
   def start_game
-    game = Game.new(board = Board.new, players = Players.new, console)
+    game = Game.new(Board.new, Players.new, console)
     game.play
   end
 end

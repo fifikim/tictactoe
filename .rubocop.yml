@@ -12,9 +12,5 @@ Metrics/BlockLength:
 Layout/LineLength:
   Exclude: 
     - ./spec/console_spec.rb
-Lint/UselessAssignment:
-  Exclude: 
-    - ./lib/main.rb
-    - ./spec/game_spec.rb
 Style/Documentation: 
   Enabled: false
