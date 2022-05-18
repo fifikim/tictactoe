@@ -57,7 +57,7 @@ class Game
   end
 
   def occupied?(index)
-    !@board.spaces[index].is_a? Integer
+    @board.spaces[index] == @current_player.mark || @board.spaces[index] == @next_player.mark
   end
 
   def check_over
