@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Game
-  attr_reader :current_player
-
   COMBOS = [
     [0, 1, 2],
     [3, 4, 5],
@@ -65,7 +63,7 @@ class Game
   def check_over
     if game_won? @current_player.mark
       end_game
-      @console.output("Game over! #{current_player.name} wins!")
+      @console.output("Game over! #{@current_player.name} wins!")
     elsif board_full?
       end_game
       @console.output("Game over! It's a draw!")
@@ -83,7 +81,7 @@ class Game
   end
 
   def switch_player
-    @current_player = current_player == @players.player1 ? @players.player2 : @players.player1
+    @current_player = @current_player == @players.player1 ? @players.player2 : @players.player1
   end
 
   def end_game
