@@ -10,7 +10,7 @@ require 'stringio'
 describe Game do
   before do
     @console = Console.new
-    @players = Players.new([Player.new('Player 1', 'X'), Player.new('Player 2', 'O')])
+    @players = Players.new(Player.new('Player 1', 'X'), Player.new('Player 2', 'O'))
     $stdout = StringIO.new
   end
 
@@ -21,7 +21,14 @@ describe Game do
     end
 
     it "initializes as player 1's turn by default" do
-      expect(@game.current_player.name).to eq('Player 1')
+      allow($stdin).to receive(:gets).and_return('1', '2', '3', '4', '5', '6', '7')
+
+      @game.play
+      output = $stdout.string.split("\n")
+
+      first_prompt = output.find { |string| string.include?('move:') }
+
+      expect(first_prompt).to eq("Player 1's move:")
     end
 
     it 'initializes board to array of numbers' do

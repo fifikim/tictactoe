@@ -18,7 +18,7 @@ class Main
   end
 
   def start_game
-    players = Players.new([Player.new('Player 1', 'X'), Player.new('Player 2', 'O')])
+    players = Players.new(Player.new('Player 1', 'X'), Player.new('Player 2', 'O'))
     game = Game.new(Board.new, players, @console)
     game.play
   end

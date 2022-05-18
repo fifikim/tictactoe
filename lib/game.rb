@@ -14,9 +14,9 @@ class Game
 
   def initialize(board, players, console)
     @board = board
-    @players = players
+    @current_player = players.initial_order[0]
+    @next_player = players.initial_order[1]
     @console = console
-    @current_player = players.player1
     @game_over = false
   end
 
@@ -72,16 +72,16 @@ class Game
     end
   end
 
+  def switch_player
+    @current_player, @next_player = @next_player, @current_player
+  end
+
   def game_won?(player_mark)
     COMBOS.any? { |combo| combo.all? { |index| @board.spaces[index] == player_mark } }
   end
 
   def board_full?
     @board.spaces.none? { |value| value.is_a? Integer }
-  end
-
-  def switch_player
-    @current_player = @current_player == @players.player1 ? @players.player2 : @players.player1
   end
 
   def end_game

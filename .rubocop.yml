@@ -10,6 +10,7 @@ Metrics/BlockLength:
   Exclude:
     - ./spec/board_spec.rb
     - ./spec/game_spec.rb
+    - ./spec/players_spec.rb
 Layout/LineLength:
   Exclude: 
     - ./spec/console_spec.rb
