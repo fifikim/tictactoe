@@ -15,11 +15,10 @@ describe Player do
     expect(@player.mark).to eq('X')
   end
 
-  describe '.select_space' do
+  describe '.select' do
     it 'takes in a player\'s input' do
       expect($stdin).to receive(:gets).and_return('1')
-      @player.select_space
+      @player.select
     end
   end
 end
-

@@ -15,11 +15,32 @@ class Game
     take_turn until @game_over
   end
 
+  private
+
   def take_turn
     @console.board(@board)
     @console.output("\n#{@current_player.name}'s move:")
-    get_input
+    select_space
     check_over
+  end
+
+  def select_space
+    input = @current_player.select
+    validate_selection(input)
+  end
+
+  def validate_selection(selection)
+    index = selection.to_i - 1
+
+    if @board.invalid? selection
+      @console.output('Invalid character! Please select an integer from 1-9:')
+      select_space
+    elsif @board.occupied? index
+      @console.output('Invalid move! Please select a free space:')
+      select_space
+    else
+      @board.record_move(@current_player.mark, index)
+    end
   end
 
   def check_over
@@ -34,25 +55,6 @@ class Game
     end
   end
 
-  def get_input
-    input = @current_player.select_space
-    validate_selection(input)
-  end
-
-  def validate_selection(selection)
-    index = selection.to_i - 1
-
-    if @board.invalid? selection
-      @console.output("Invalid character! Please select an integer from 1-9:")
-      get_input
-    elsif @board.occupied? index
-      @console.output("Invalid move! Please select a free space:")
-      get_input
-    else
-      @board.record_move(@current_player.mark, index)
-    end
-  end
-
   def switch_player
     @current_player = current_player == @players.player1 ? @players.player2 : @players.player1
   end
@@ -61,5 +63,4 @@ class Game
     @game_over = true
     @console.board(@board)
   end
-
 end

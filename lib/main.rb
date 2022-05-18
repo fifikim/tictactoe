@@ -17,8 +17,6 @@ class Main
     @console.output('Thanks for playing! Goodbye.')
   end
 
-  private
-
   def start_game
     players = Players.new([Player.new('Player 1', 'X'), Player.new('Player 2', 'O')])
     game = Game.new(Board.new, players, @console)

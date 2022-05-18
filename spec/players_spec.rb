@@ -7,6 +7,7 @@ describe Players do
   before do
     @players = Players.new([Player.new('Player 1', 'X'), Player.new('Player 2', 'O')])
   end
+
   it 'shows the correct name for player 1' do
     expect(@players.player1.name).to eq('Player 1')
   end
@@ -23,4 +24,3 @@ describe Players do
     expect(@players.player2.mark).to eq('O')
   end
 end
-
