@@ -4,9 +4,8 @@ require 'board'
 
 describe Board do
   context 'when starting a new game' do
-    let(:board) { Board.new }
-
     it 'elements in the spaces array contain an integer from 1 to 9' do
+      board = Board.new
       expect(board.spaces).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
     end
   end

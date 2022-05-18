@@ -30,11 +30,11 @@ class Board
     spaces[index] = marker
   end
 
-  def won?(player)
-    COMBOS.any? { |combo| combo.all? { |space| spaces[space] == player } }
+  def won?(player_mark)
+    COMBOS.any? { |combo| combo.all? { |index| spaces[index] == player_mark } }
   end
 
   def full?
-    spaces.none? { |space| space.is_a? Integer }
+    spaces.none? { |value| value.is_a? Integer }
   end
 end
