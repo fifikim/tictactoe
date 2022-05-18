@@ -47,7 +47,7 @@ describe Game do
         @game.play
         output = $stdout.string.split("\n")
 
-        expect(output.last).to eq('Game over! Player 1 wins!')
+        expect(output).to include('Game over! Player 1 wins!')
       end
     end
 
@@ -61,7 +61,7 @@ describe Game do
         @game.play
         output = $stdout.string.split("\n")
 
-        expect(output.last).to eq('Game over! Player 2 wins!')
+        expect(output).to include('Game over! Player 2 wins!')
       end
     end
 
@@ -75,7 +75,7 @@ describe Game do
         @game.play
         output = $stdout.string.split("\n")
 
-        expect(output.last).to eq("Game over! It's a draw!")
+        expect(output).to include("Game over! It's a draw!")
       end
     end
   end
@@ -88,25 +88,23 @@ describe Game do
 
     describe 'when occupied space is selected' do
       it 're-prompts player for input until free space is selected' do
-        allow($stdin).to receive(:gets).and_return('1', '2', '3', '4', '5', '9')
+        allow($stdin).to receive(:gets).and_return('1', '9')
 
         @game.play
         output = $stdout.string.split("\n")
-        error_messages = output.find_all { |string| string == 'Invalid move! Please select a free space:' }
 
-        expect(error_messages.length).to eq(5)
+        expect(output).to include('Invalid move! Please select a free space:')
       end
     end
 
     describe 'when invalid character is selected' do
       it 're-prompts player for input until valid char is selected' do
-        allow($stdin).to receive(:gets).and_return('n', 'n', 'n', 'n', 'n', 'n', '9')
+        allow($stdin).to receive(:gets).and_return('n', '9')
 
         @game.play
         output = $stdout.string.split("\n")
-        error_messages = output.find_all { |string| string == 'Invalid character! Please select an integer from 1-9:' }
 
-        expect(error_messages.length).to eq(6)
+        expect(output).to include('Invalid character! Please select an integer from 1-9:')
       end
     end
   end
