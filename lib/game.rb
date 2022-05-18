@@ -3,6 +3,17 @@
 class Game
   attr_reader :current_player
 
+  COMBOS = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ].freeze
+
   def initialize(board, players, console)
     @board = board
     @players = players
@@ -32,10 +43,10 @@ class Game
   def validate_selection(selection)
     index = selection.to_i - 1
 
-    if @board.invalid? selection
+    if invalid? selection
       @console.output('Invalid character! Please select an integer from 1-9:')
       select_space
-    elsif @board.occupied? index
+    elsif occupied? index
       @console.output('Invalid move! Please select a free space:')
       select_space
     else
@@ -43,16 +54,32 @@ class Game
     end
   end
 
+  def invalid?(input)
+    /^([1-9])$/.match(input).nil?
+  end
+
+  def occupied?(index)
+    !@board.spaces[index].is_a? Integer
+  end
+
   def check_over
-    if @board.won? @current_player.mark
+    if game_won? @current_player.mark
       end_game
       @console.output("Game over! #{current_player.name} wins!")
-    elsif @board.full?
+    elsif board_full?
       end_game
       @console.output("Game over! It's a draw!")
     else
       switch_player
     end
+  end
+
+  def game_won?(player_mark)
+    COMBOS.any? { |combo| combo.all? { |index| @board.spaces[index] == player_mark } }
+  end
+
+  def board_full?
+    @board.spaces.none? { |value| value.is_a? Integer }
   end
 
   def switch_player
