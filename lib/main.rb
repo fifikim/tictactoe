@@ -47,7 +47,7 @@ class Main
       Players.new(player1, player2)
     else
       @console.output('Invalid selection! Please try again.')
-      select_players
+      select_players(board)
     end
   end
 end
