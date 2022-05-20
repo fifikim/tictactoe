@@ -30,10 +30,10 @@ class Console
   end
 
   def game_types
-    "What type of game would you like to play?\n" \
-    "Select a number from the choices below:\n" \
-    "1 - Player vs. Player\n" \
-    "2 - Player vs. Computer\n"
+    "Who would you like to play against?\n" \
+      "Select a number:\n" \
+      "1 - Player vs. Player\n" \
+      "2 - Computer vs. Player\n"
   end
 
   def board_template(board)

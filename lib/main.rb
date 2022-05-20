@@ -35,17 +35,18 @@ class Main
 
   def select_players(board)
     player_type = $stdin.gets.strip
-    
-    if player_type == '1'
+
+    case player_type
+    when '1'
       player1 = Player.new('Player 1', 'X')
       player2 = Player.new('Player 2', 'O')
       Players.new(player1, player2)
-    elsif player_type == '2'
+    when '2'
       player1 = EasyAiPlayer.new(board, 'O')
       player2 = Player.new('Player', 'O')
       Players.new(player1, player2)
-    else 
-      @console.output("Invalid selection! Please try again.")
+    else
+      @console.output('Invalid selection! Please try again.')
       select_players
     end
   end

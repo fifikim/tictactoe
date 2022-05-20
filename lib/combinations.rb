@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Combinations
   def three_in_a_row
     [

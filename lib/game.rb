@@ -31,7 +31,7 @@ class Game
 
   def select_space
     input = @current_player.select
-    validate_selection(input) 
+    validate_selection(input)
   end
 
   def switch_player

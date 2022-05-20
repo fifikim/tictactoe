@@ -11,7 +11,7 @@ class EasyAiPlayer
   end
 
   def select
-    first_free = @board.spaces.find_index { | val | val.is_a? Integer }
+    first_free = @board.spaces.find_index { |val| val.is_a? Integer }
     (first_free + 1).to_s
   end
 

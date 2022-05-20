@@ -14,7 +14,7 @@ describe Console do
     @console.output('A console instance printed this test message')
     output = $stdout.string.split("\n")
 
-    expect(output).to include("A console instance printed this test message")
+    expect(output).to include('A console instance printed this test message')
   end
 
   describe '.instructions' do
@@ -25,11 +25,13 @@ describe Console do
     end
   end
 
-  it 'should display the game menu' do
-    @console.menu
-    output = $stdout.string.split("\n")
+  describe '.player_menu' do
+    it 'should display the player menu' do
+      @console.menu
+      output = $stdout.string.split("\n")
 
-    expect(output).to include("What type of game would you like to play?")
+      expect(output).to include('Who would you like to play against?')
+    end
   end
 
   describe '.board' do
@@ -41,5 +43,3 @@ describe Console do
     end
   end
 end
-
-

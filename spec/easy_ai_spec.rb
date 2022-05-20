@@ -46,7 +46,7 @@ describe EasyAiPlayer do
       expect(first_free).to eq('2')
     end
   end
-    
+
   context 'when multiple spaces have been selected' do
     it 'selects the first available space' do
       @board = Board.new(['X', 'O', 'X', 4, 'O', 6, 'X', 8, 9])
@@ -56,5 +56,4 @@ describe EasyAiPlayer do
       expect(first_free).to eq('4')
     end
   end
-
 end

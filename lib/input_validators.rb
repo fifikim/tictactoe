@@ -1,5 +1,6 @@
-module InputValidators
+# frozen_string_literal: true
 
+module InputValidators
   def validate_selection(selection)
     index = selection.to_i - 1
 

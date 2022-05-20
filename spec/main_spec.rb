@@ -16,16 +16,16 @@ describe Main do
     end
 
     it 'prints the game menu' do
-      expect(@output).to include("What type of game would you like to play?")
+      expect(@output).to include('Who would you like to play against?')
     end
-      
+
     it 'prints Tic Tac Toe instructions' do
       expect(@output).to include('TIC TAC TOE')
     end
 
     it "initializes as player 1's turn by default" do
       over_message = @output.find { |string| string.include?('Game over!') }
-      expect(over_message).to include("Game over!")
+      expect(over_message).to include('Game over!')
     end
 
     it 'displays a goodbye message after the game ends' do
