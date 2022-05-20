@@ -5,6 +5,7 @@ require 'board'
 require 'player'
 require 'players'
 require 'console'
+require 'combinations'
 require 'stringio'
 
 describe Game do
@@ -17,7 +18,8 @@ describe Game do
   context 'when starting a new game' do
     before do
       @board = Board.new
-      @game = Game.new(@board, @players, @console)
+      @combinations = Combinations.new.three_in_a_row
+      @game = Game.new(@board, @players, @combinations, @console)
     end
 
     it "initializes as player 1's turn by default" do
@@ -28,7 +30,7 @@ describe Game do
 
       first_prompt = output.find { |string| string.include?('move:') }
 
-      expect(first_prompt).to eq("Player 1's move:")
+      expect(first_prompt).to include("Player 1's move:")
     end
 
     it 'initializes board to array of numbers' do
@@ -40,7 +42,8 @@ describe Game do
     describe 'when Player 1 wins' do
       it 'loops until winning combo is recorded and then declares Player 1 as the winner' do
         @board = Board.new([1, 'X', 'X', 4, 'O', 'X', 'X', 8, 'O'])
-        @game = Game.new(@board, @players, @console)
+        @combinations = Combinations.new.three_in_a_row
+        @game = Game.new(@board, @players, @combinations, @console)
 
         allow($stdin).to receive(:gets).and_return('8', '4', '1')
 
@@ -54,7 +57,8 @@ describe Game do
     describe 'when Player 2 wins' do
       it 'loops until winning combo is recorded and then declares Player 2 as the winner' do
         @board = Board.new([1, 'X', 'X', 4, 'O', 'X', 'X', 8, 'O'])
-        @game = Game.new(@board, @players, @console)
+        @combinations = Combinations.new.three_in_a_row
+        @game = Game.new(@board, @players, @combinations, @console)
 
         allow($stdin).to receive(:gets).and_return('8', '1', '4')
 
@@ -68,7 +72,8 @@ describe Game do
     describe 'when the game is a draw' do
       it 'loops until board is full and then declares a draw' do
         @board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 7, 8, 9])
-        @game = Game.new(@board, @players, @console)
+        @combinations = Combinations.new.three_in_a_row
+        @game = Game.new(@board, @players, @combinations, @console)
 
         allow($stdin).to receive(:gets).and_return('7', '9', '8')
 
@@ -83,7 +88,8 @@ describe Game do
   context 'when invalid input is received' do
     before do
       @board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 9])
-      @game = Game.new(@board, @players, @console)
+      @combinations = Combinations.new.three_in_a_row
+      @game = Game.new(@board, @players, @combinations, @console)
     end
 
     describe 'when occupied space is selected' do

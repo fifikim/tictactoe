@@ -5,6 +5,10 @@ class Console
     puts message
   end
 
+  def menu
+    output(game_types)
+  end
+
   def instructions
     output(instruction)
   end
@@ -23,7 +27,13 @@ class Console
       "Player 1 moves first and marks their spaces with an \"X\". Player 2 marks with an \"O\".\n" \
       "To win, claim 3 adjacent spaces in a horizontal, vertical, or diagonal line.\n" \
       "If there are no free spaces and no player has won, the game will end in a draw.\n\n" \
-      "Starting new game...\n\n"
+  end
+
+  def game_types
+    "What type of game would you like to play?\n" \
+    "Select a number from the choices below:\n" \
+    "1 - Player vs. Player\n" \
+    "2 - Player vs. Computer\n"
   end
 
   def board_template(board)

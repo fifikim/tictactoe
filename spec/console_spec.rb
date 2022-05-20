@@ -2,25 +2,34 @@
 
 require 'board'
 require 'console'
+require 'stringio'
 
 describe Console do
   before do
     @console = Console.new
+    $stdout = StringIO.new
   end
 
   it 'should take in a message and print it to the console' do
-    message = 'A console instance printed this test message'
-    expect do
-      @console.output(message)
-    end.to output("A console instance printed this test message\n").to_stdout
+    @console.output('A console instance printed this test message')
+    output = $stdout.string.split("\n")
+
+    expect(output).to include("A console instance printed this test message")
   end
 
   describe '.instructions' do
     it 'should print instructions to the console' do
-      expect do
-        @console.instructions
-      end.to output("TIC TAC TOE\n\nInstructions:\nEnter the number (1-9) of the space on the board where you want to move.\nPlayer 1 moves first and marks their spaces with an \"X\". Player 2 marks with an \"O\".\nTo win, claim 3 adjacent spaces in a horizontal, vertical, or diagonal line.\nIf there are no free spaces and no player has won, the game will end in a draw.\n\nStarting new game...\n\n").to_stdout
+      @console.instructions
+      output = $stdout.string.split("\n")
+      expect(output).to include('Instructions:')
     end
+  end
+
+  it 'should display the game menu' do
+    @console.menu
+    output = $stdout.string.split("\n")
+
+    expect(output).to include("What type of game would you like to play?")
   end
 
   describe '.board' do
@@ -32,3 +41,5 @@ describe Console do
     end
   end
 end
+
+
