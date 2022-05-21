@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Player
-  attr_reader :name, :mark
+  attr_reader :name, :marker
 
-  def initialize(name, mark)
+  def initialize(name, marker)
     @name = name
-    @mark = mark
+    @marker = marker
   end
 
   def select

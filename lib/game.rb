@@ -1,18 +1,17 @@
 # frozen_string_literal: true
 
-require_relative 'input_validators'
-require_relative 'win_draw_checkers'
+require_relative 'input_validator'
+require_relative 'win_draw_finder'
 
 class Game
-  include InputValidators
-  include WinDrawCheckers
+  include InputValidator
+  include WinDrawFinder
 
-  def initialize(board, players, combinations, console)
+  def initialize(board, players, console)
     @board = board
     @current_player = players.initial_order[0]
     @next_player = players.initial_order[1]
     @console = console
-    @combinations = combinations
     @game_over = false
   end
 

@@ -6,7 +6,6 @@ require_relative 'board'
 require_relative 'player'
 require_relative 'players'
 require_relative 'easy_ai'
-require_relative 'combinations'
 
 class Main
   def initialize(console = Console.new)
@@ -15,7 +14,6 @@ class Main
 
   def run
     @console.instructions
-    @console.menu
 
     game = configure_game
     @console.output("\nStarting new game...\n\n")
@@ -28,12 +26,12 @@ class Main
 
   def configure_game
     board = Board.new
-    combinations = Combinations.new.three_in_a_row
     players = select_players(board)
-    Game.new(board, players, combinations, @console)
+    Game.new(board, players, @console)
   end
 
   def select_players(board)
+    @console.menu
     player_type = $stdin.gets.strip
 
     case player_type

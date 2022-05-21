@@ -13,8 +13,8 @@ describe EasyAiPlayer do
     expect(@ai_player.name).to eq('Computer')
   end
 
-  it 'returns the correct value for .mark' do
-    expect(@ai_player.mark).to eq('X')
+  it 'returns the correct value for .marker' do
+    expect(@ai_player.marker).to eq('X')
   end
 
   context 'when the board is empty' do

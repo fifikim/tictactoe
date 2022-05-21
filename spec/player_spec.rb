@@ -12,7 +12,7 @@ describe Player do
   end
 
   it 'returns the correct value for .mark' do
-    expect(@player.mark).to eq('X')
+    expect(@player.marker).to eq('X')
   end
 
   describe '.select' do

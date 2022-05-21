@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class EasyAiPlayer
-  attr_reader :name, :mark
+  attr_reader :name, :marker
 
-  def initialize(board, player_mark)
+  def initialize(board, player_marker)
     @name = 'Computer'
-    @mark = 'X'
-    @player_mark = player_mark
+    @marker = 'X'
+    @player_marker = player_marker
     @board = board
   end
 
