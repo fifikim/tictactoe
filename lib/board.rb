@@ -23,8 +23,8 @@ class Board
   end
 
   def first_free
-    first_index = default_spaces.find_index { |space| !occupied_space?(space) }
-    convert_to_space(first_index)
+    first_space = default_spaces.find { |space| !occupied_space?(space) }
+    first_space.to_s
   end
 
   private
@@ -35,9 +35,5 @@ class Board
 
   def convert_to_index(space)
     space.to_i - 1
-  end
-
-  def convert_to_space(index)
-    (index + 1).to_s
   end
 end
