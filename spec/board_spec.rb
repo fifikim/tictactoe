@@ -25,4 +25,32 @@ describe Board do
       expect(board.spaces).to eq(['X', 'O', 3, 4, 5, 6, 7, 8, 9])
     end
   end
+
+  describe '.full?' do
+    it 'returns true if there are no more free spaces on the board' do
+      board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 'X'])
+      full_board = board.full?('X', 'O')
+      expect(full_board).to be true
+    end
+
+    it 'returns false if there are free spaces on the board' do
+      board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 9])
+      full_board = board.full?('X', 'O')
+      expect(full_board).to be false
+    end
+  end
+
+  describe '.occupied?' do
+    board = Board.new(['X', 2, 3, 4, 5, 6, 7, 8, 9])
+
+    it 'returns true if a space has already been marked' do
+      space_occupied = board.occupied?('1', 'X', 'O')
+      expect(space_occupied).to be true
+    end
+
+    it 'returns false if a space is free' do
+      space_occupied = board.occupied?('2', 'X', 'O')
+      expect(space_occupied).to be false
+    end
+  end
 end

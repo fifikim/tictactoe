@@ -12,6 +12,15 @@ class Board
     @spaces[index] = marker
   end
 
+  # def full?(player1_marker, player2_marker)
+  #   @spaces.all? { |value| value == player1_marker || value == player2_marker }
+  # end
+
+  # def occupied?(selection, player1_marker, player2_marker)
+  #   index = convert(selection)
+  #   @spaces[index] == player1_marker || @spaces[index] == player2_marker
+  # end
+
   def full?(player1_marker, player2_marker)
     @spaces.all? { |value| value == player1_marker || value == player2_marker }
   end
