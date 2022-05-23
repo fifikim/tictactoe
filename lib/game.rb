@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require_relative 'input_validator'
-require_relative 'win_draw_finder'
+require_relative 'win_finder'
 
 class Game
   include InputValidator
-  include WinDrawFinder
+  include WinFinder
 
   def initialize(board, players, console)
     @board = board
@@ -30,7 +30,28 @@ class Game
 
   def select_space
     input = @current_player.select
-    validate_selection(input)
+
+    if invalid_selection? input
+      @console.output('Invalid character! Please select an integer from 1-9:')
+      select_space
+    elsif @board.occupied?(input, @current_player.marker, @next_player.marker)
+      @console.output('Invalid move! Please select a free space:')
+      select_space
+    end
+
+    @board.record_move(@current_player.marker, input)
+  end
+
+  def check_over
+    if game_won?(@board.spaces, @current_player.marker)
+      end_game
+      @console.output("Game over! #{@current_player.name} wins!")
+    elsif @board.full?(@current_player.marker, @next_player.marker)
+      end_game
+      @console.output("Game over! It's a draw!")
+    else
+      switch_player
+    end
   end
 
   def switch_player

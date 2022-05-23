@@ -18,11 +18,11 @@ describe Players do
     end
 
     it 'shows the correct mark for player 1' do
-      expect(@players.initial_order[0].mark).to eq('X')
+      expect(@players.initial_order[0].marker).to eq('X')
     end
 
     it 'shows the correct mark for player 2' do
-      expect(@players.initial_order[1].mark).to eq('O')
+      expect(@players.initial_order[1].marker).to eq('O')
     end
   end
 
@@ -40,11 +40,11 @@ describe Players do
     end
 
     it 'shows the correct mark for player 1' do
-      expect(@players.initial_order[0].mark).to eq('0')
+      expect(@players.initial_order[0].marker).to eq('0')
     end
 
     it 'shows the correct mark for player 2' do
-      expect(@players.initial_order[1].mark).to eq('X')
+      expect(@players.initial_order[1].marker).to eq('X')
     end
   end
 end
