@@ -28,7 +28,7 @@ describe Board do
 
   describe '.full?' do
     it 'returns true if there are no more free spaces on the board' do
-      board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 'X'])
+      board = Board.new(%w[X X O O O X X O X])
       full_board = board.full?('X', 'O')
       expect(full_board).to be true
     end
