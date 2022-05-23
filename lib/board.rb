@@ -3,36 +3,41 @@
 class Board
   attr_reader :spaces
 
-  def initialize(spaces = (1..9).to_a)
+  def initialize(markers, spaces = default_spaces)
+    @markers = markers
     @spaces = spaces
   end
 
   def record_move(marker, selection)
-    index = convert(selection)
+    index = convert_to_index(selection)
     @spaces[index] = marker
   end
 
-  # def full?(player1_marker, player2_marker)
-  #   @spaces.all? { |value| value == player1_marker || value == player2_marker }
-  # end
-
-  # def occupied?(selection, player1_marker, player2_marker)
-  #   index = convert(selection)
-  #   @spaces[index] == player1_marker || @spaces[index] == player2_marker
-  # end
-
-  def full?(player1_marker, player2_marker)
-    @spaces.all? { |value| value == player1_marker || value == player2_marker }
+  def full?
+    @spaces.all? { |value| occupied_space? value }
   end
 
-  def occupied?(selection, player1_marker, player2_marker)
-    index = convert(selection)
-    @spaces[index] == player1_marker || @spaces[index] == player2_marker
+  def occupied_space?(space)
+    index = convert_to_index(space)
+    @markers.any? { |marker| marker == @spaces[index] }
+  end
+
+  def first_free
+    first_index = default_spaces.find_index { |space| !occupied_space?(space) }
+    convert_to_space(first_index)
   end
 
   private
 
-  def convert(selection)
-    selection.to_i - 1
+  def default_spaces
+    (1..9).to_a
+  end
+
+  def convert_to_index(space)
+    space.to_i - 1
+  end
+
+  def convert_to_space(index)
+    (index + 1).to_s
   end
 end

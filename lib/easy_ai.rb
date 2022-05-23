@@ -3,16 +3,14 @@
 class EasyAiPlayer
   attr_reader :name, :marker
 
-  def initialize(board, player_marker)
+  def initialize(board)
     @name = 'Computer'
     @marker = 'X'
-    @player_marker = player_marker
     @board = board
   end
 
   def select
-    first_free = @board.spaces.find_index { |val| val != @marker && val != @player_marker }
-    (first_free + 1).to_s
+    @board.first_free
   end
 
   def turn_message

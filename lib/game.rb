@@ -34,7 +34,7 @@ class Game
     if invalid_selection? input
       @console.output('Invalid character! Please select an integer from 1-9:')
       select_space
-    elsif @board.occupied?(input, @current_player.marker, @next_player.marker)
+    elsif @board.occupied_space?(input)
       @console.output('Invalid move! Please select a free space:')
       select_space
     end
@@ -46,7 +46,7 @@ class Game
     if game_won?(@board.spaces, @current_player.marker)
       end_game
       @console.output("Game over! #{@current_player.name} wins!")
-    elsif @board.full?(@current_player.marker, @next_player.marker)
+    elsif @board.full?
       end_game
       @console.output("Game over! It's a draw!")
     else
