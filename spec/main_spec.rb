@@ -19,10 +19,6 @@ describe Main do
       expect(@output).to include('Who would you like to play against?')
     end
 
-    it 'prints the select_order menu' do
-      expect(@output).to include('Who should take the first turn?')
-    end
-
     it 'prints Tic Tac Toe instructions' do
       expect(@output).to include('TIC TAC TOE')
     end

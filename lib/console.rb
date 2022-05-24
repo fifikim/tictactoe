@@ -18,11 +18,6 @@ class Console
     output(player_types)
   end
 
-  def order_menu(unordered_players)
-    menu = order_types(unordered_players)
-    output(menu)
-  end
-
   private
 
   def instruction
@@ -39,13 +34,6 @@ class Console
       "Select a number:\n" \
       "1 - Player vs. Player\n" \
       "2 - Computer vs. Player\n"
-  end
-
-  def order_types(unordered_players)
-    "\nWho should take the first turn?\n" \
-      "Select a number:\n" \
-      "1 - #{unordered_players[0].name}\n" \
-      "2 - #{unordered_players[1].name}\n"
   end
 
   def board_template(board)

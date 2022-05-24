@@ -30,9 +30,8 @@ class Main
 
     board = Board.new
     unordered_players = select_players(board, player1_marker, player2_marker)
-    ordered_players = select_order(unordered_players)
 
-    Game.new(board, ordered_players, @console)
+    Game.new(board, unordered_players, @console)
   end
 
   def select_players(board, player1_marker, player2_marker)
@@ -41,27 +40,12 @@ class Main
 
     case player_type
     when '1'
-      [Player.new('Player 1', player1_marker), Player.new('Player 2', player2_marker)]
+      Players.new(Player.new('Player 1', player1_marker), Player.new('Player 2', player2_marker))
     when '2'
-      [EasyAiPlayer.new(board), Player.new('Player 1', player2_marker)]
+      Players.new(EasyAiPlayer.new(board), Player.new('Player 1', player2_marker))
     else
       @console.output('Invalid selection! Please try again.')
       select_players(board, player1_marker, player2_marker)
-    end
-  end
-
-  def select_order(players)
-    @console.order_menu(players)
-    order = $stdin.gets
-
-    case order
-    when '1'
-      Players.new(players[0], players[1])
-    when '2'
-      Players.new(players[1], players[0])
-    else
-      @console.output('Invalid selection! Please try again.')
-      select_order(players)
     end
   end
 end
