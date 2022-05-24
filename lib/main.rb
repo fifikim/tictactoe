@@ -32,7 +32,7 @@ class Main
 
   def select_players(board)
     @console.player_menu
-    player_type = $stdin.gets
+    player_type = $stdin.gets.strip
 
     case player_type
     when '1'
