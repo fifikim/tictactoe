@@ -55,28 +55,17 @@ describe Board do
   end
 
   describe '.first_free' do
-    it "returns '1' if the board is empty" do
-      board = Board.new([1, 2, 3, 4, 5, 6, 7, 8, 9])
-      first_free = board.first_free(%w[X O])
-      expect(first_free).to eq('1')
-    end
-
-    it "returns '2' if the first space is occupied" do
-      board = Board.new(['X', 2, 3, 4, 5, 6, 7, 8, 9])
-      first_free = board.first_free(%w[X O])
-      expect(first_free).to eq('2')
-    end
-
-    it "returns '3' if the first two spaces are occupied" do
-      board = Board.new(['X', 'O', 3, 4, 5, 6, 7, 8, 9])
-      first_free = board.first_free(%w[X O])
-      expect(first_free).to eq('3')
-    end
-
-    it "returns '1' if the first space is free and other spaces are occupied" do
-      board = Board.new([1, 'O', 'X', 4, 5, 6, 7, 8, 9])
-      first_free = board.first_free(%w[X O])
-      expect(first_free).to eq('1')
+    {
+      'board is empty' => ['1', [1, 2, 3, 4, 5, 6, 7, 8, 9]],
+      'first space is occupied' => ['2', ['X', 2, 3, 4, 5, 6, 7, 8, 9]],
+      'first two spaces are occupied' => ['3', ['X', 'O', 3, 4, 5, 6, 7, 8, 9]],
+      'the first space is free and other spaces are occupied' => ['1', [1, 'O', 'X', 4, 5, 6, 7, 8, 9]]
+    }.each do |condition, options|
+      it "returns #{options[0]} if #{condition}" do
+        board = Board.new(options[1])
+        first_free = board.first_free(%w[X O])
+        expect(first_free).to eq(options[0])
+      end
     end
   end
 end

@@ -21,12 +21,11 @@ describe Game do
       @game = Game.new(@board, @players, @console)
     end
 
-    it "initializes as player 1's turn by default" do
+    it "starts with the correct player's turn" do
       allow($stdin).to receive(:gets).and_return('1', '2', '3', '4', '5', '6', '7')
 
       @game.play
       output = $stdout.string.split("\n")
-
       first_prompt = output.find { |string| string.include?('move:') }
 
       expect(first_prompt).to include("Player 1's move:")

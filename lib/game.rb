@@ -7,6 +7,8 @@ class Game
   include InputValidator
   include WinFinder
 
+  attr_reader :current_player, :next_player
+
   def initialize(board, players, console)
     @board = board
     @current_player = players.initial_order[0]
