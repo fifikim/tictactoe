@@ -38,7 +38,7 @@ class Main
     when '1'
       Players.new(Player.new('Player 1', 'X'), Player.new('Player 2', 'O'))
     when '2'
-      Players.new(EasyAiPlayer.new(board, 'X'), Player.new('Player 1', 'O'))
+      Players.new(EasyAiPlayer.new('Computer', 'X'), Player.new('Player 1', 'O'))
     else
       @console.output('Invalid selection! Please try again.')
       select_players(board)

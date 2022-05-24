@@ -3,14 +3,13 @@
 class EasyAiPlayer
   attr_reader :name, :marker
 
-  def initialize(board, marker)
-    @name = 'Computer'
+  def initialize(name, marker)
+    @name = name
     @marker = marker
-    @board = board
   end
 
-  def select(markers)
-    @board.first_free(markers)
+  def select(board, markers)
+    board.first_free(markers)
   end
 
   def turn_message

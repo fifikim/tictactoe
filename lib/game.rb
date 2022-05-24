@@ -30,7 +30,7 @@ class Game
   end
 
   def select_space
-    input = @current_player.select(@markers)
+    input = @current_player.select(@board, @markers)
 
     if invalid_selection? input
       @console.output('Invalid character! Please select an integer from 1-9:')
