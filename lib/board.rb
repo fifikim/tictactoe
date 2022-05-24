@@ -28,10 +28,6 @@ class Board
 
   private
 
-  def default_spaces
-    (1..9).to_a
-  end
-
   def convert_to_index(space)
     space.to_i - 1
   end
