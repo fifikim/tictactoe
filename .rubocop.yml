@@ -17,6 +17,7 @@ Metrics/BlockLength:
     - ./spec/easy_ai_spec.rb
     - ./spec/win_finder_spec.rb
     - ./spec/input_validator_spec.rb
+    - ./spec/game_configurator_spec.rb
 Layout/LineLength:
   Exclude: 
     - ./spec/console_spec.rb

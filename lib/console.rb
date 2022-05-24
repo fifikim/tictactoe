@@ -5,10 +5,6 @@ class Console
     puts message
   end
 
-  def menu
-    output(game_types)
-  end
-
   def instructions
     output(instruction)
   end
@@ -16,6 +12,15 @@ class Console
   def board(board)
     current_board = board_template(board.spaces)
     output(current_board)
+  end
+
+  def player_menu
+    output(player_types)
+  end
+
+  def order_menu(unordered_players)
+    menu = order_types(unordered_players)
+    output(menu)
   end
 
   private
@@ -29,11 +34,18 @@ class Console
       "If there are no free spaces and no player has won, the game will end in a draw.\n\n" \
   end
 
-  def game_types
+  def player_types
     "Who would you like to play against?\n" \
       "Select a number:\n" \
       "1 - Player vs. Player\n" \
       "2 - Computer vs. Player\n"
+  end
+
+  def order_types(unordered_players)
+    "\nWho should take the first turn?\n" \
+      "Select a number:\n" \
+      "1 - #{unordered_players[0].name}\n" \
+      "2 - #{unordered_players[1].name}\n"
   end
 
   def board_template(board)

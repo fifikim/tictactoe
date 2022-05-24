@@ -9,8 +9,8 @@ class EasyAiPlayer
     @board = board
   end
 
-  def select
-    @board.first_free
+  def select(markers)
+    @board.first_free(markers)
   end
 
   def turn_message

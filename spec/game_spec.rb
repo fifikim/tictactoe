@@ -11,12 +11,13 @@ describe Game do
   before do
     @console = Console.new
     @players = Players.new(Player.new('Player 1', 'X'), Player.new('Player 2', 'O'))
+    @markers = %w[X O]
     $stdout = StringIO.new
   end
 
   context 'when starting a new game' do
     before do
-      @board = Board.new(%w[X O])
+      @board = Board.new
       @game = Game.new(@board, @players, @console)
     end
 
@@ -39,7 +40,7 @@ describe Game do
   context 'during regular gameplay' do
     describe 'when Player 1 wins' do
       it 'loops until winning combo is recorded and then declares Player 1 as the winner' do
-        @board = Board.new(%w[X O], [1, 'X', 'X', 4, 'O', 'X', 'X', 8, 'O'])
+        @board = Board.new([1, 'X', 'X', 4, 'O', 'X', 'X', 8, 'O'])
         @game = Game.new(@board, @players, @console)
 
         allow($stdin).to receive(:gets).and_return('8', '4', '1')
@@ -53,7 +54,7 @@ describe Game do
 
     describe 'when Player 2 wins' do
       it 'loops until winning combo is recorded and then declares Player 2 as the winner' do
-        @board = Board.new(%w[X O], [1, 'X', 'X', 4, 'O', 'X', 'X', 8, 'O'])
+        @board = Board.new([1, 'X', 'X', 4, 'O', 'X', 'X', 8, 'O'])
         @game = Game.new(@board, @players, @console)
 
         allow($stdin).to receive(:gets).and_return('8', '1', '4')
@@ -67,7 +68,7 @@ describe Game do
 
     describe 'when the game is a draw' do
       it 'loops until board is full and then declares a draw' do
-        @board = Board.new(%w[X O], ['X', 'X', 'O', 'O', 'O', 'X', 7, 8, 9])
+        @board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 7, 8, 9])
         @game = Game.new(@board, @players, @console)
 
         allow($stdin).to receive(:gets).and_return('7', '9', '8')
@@ -82,7 +83,7 @@ describe Game do
 
   context 'when invalid input is received' do
     before do
-      @board = Board.new(%w[X O], ['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 9])
+      @board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 9])
       @game = Game.new(@board, @players, @console)
     end
 

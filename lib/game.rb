@@ -4,6 +4,8 @@ require_relative 'input_validator'
 require_relative 'win_finder'
 
 class Game
+  attr_reader :current_player, :next_player
+
   include InputValidator
   include WinFinder
 
@@ -11,6 +13,7 @@ class Game
     @board = board
     @current_player = players.initial_order[0]
     @next_player = players.initial_order[1]
+    @markers = [@current_player.marker, @next_player.marker]
     @console = console
     @game_over = false
   end
@@ -29,12 +32,12 @@ class Game
   end
 
   def select_space
-    input = @current_player.select
+    input = @current_player.select(@markers)
 
     if invalid_selection? input
       @console.output('Invalid character! Please select an integer from 1-9:')
       select_space
-    elsif @board.occupied_space?(input)
+    elsif @board.occupied_space?(input, @markers)
       @console.output('Invalid move! Please select a free space:')
       select_space
     end
@@ -46,7 +49,7 @@ class Game
     if game_won?(@board.spaces, @current_player.marker)
       end_game
       @console.output("Game over! #{@current_player.name} wins!")
-    elsif @board.full?
+    elsif @board.full?(@markers)
       end_game
       @console.output("Game over! It's a draw!")
     else

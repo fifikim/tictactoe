@@ -17,8 +17,9 @@ describe Player do
 
   describe '.select' do
     it 'takes in a player\'s input' do
+      markers = %w[X O]
       expect($stdin).to receive(:gets).and_return('1')
-      @player.select
+      @player.select(markers)
     end
   end
 end
