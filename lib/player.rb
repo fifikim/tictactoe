@@ -8,7 +8,7 @@ class Player
     @marker = marker
   end
 
-  def select(markers)
+  def select(_marker)
     $stdin.gets
   end
 

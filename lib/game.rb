@@ -4,8 +4,6 @@ require_relative 'input_validator'
 require_relative 'win_finder'
 
 class Game
-  attr_reader :current_player, :next_player
-
   include InputValidator
   include WinFinder
 

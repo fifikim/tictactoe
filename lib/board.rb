@@ -16,7 +16,6 @@ class Board
     @spaces.all? { |value| occupied_space?(value, markers) }
   end
 
-  ### pass in markers
   def occupied_space?(space, markers)
     index = convert_to_index(space)
     markers.any? { |marker| marker == @spaces[index] }
