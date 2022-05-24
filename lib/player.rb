@@ -9,7 +9,6 @@ class Player
   end
 
   def select(markers)
-    puts markers
     $stdin.gets
   end
 
