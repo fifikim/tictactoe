@@ -3,9 +3,9 @@
 class EasyAiPlayer
   attr_reader :name, :marker
 
-  def initialize(board)
+  def initialize(board, marker)
     @name = 'Computer'
-    @marker = 'X'
+    @marker = marker
     @board = board
   end
 

@@ -25,27 +25,23 @@ class Main
   private
 
   def configure_game
-    player1_marker = 'X'
-    player2_marker = 'O'
-
     board = Board.new
-    unordered_players = select_players(board, player1_marker, player2_marker)
-
+    unordered_players = select_players(board)
     Game.new(board, unordered_players, @console)
   end
 
-  def select_players(board, player1_marker, player2_marker)
+  def select_players(board)
     @console.player_menu
     player_type = $stdin.gets
 
     case player_type
     when '1'
-      Players.new(Player.new('Player 1', player1_marker), Player.new('Player 2', player2_marker))
+      Players.new(Player.new('Player 1', 'X'), Player.new('Player 2', 'O'))
     when '2'
-      Players.new(EasyAiPlayer.new(board), Player.new('Player 1', player2_marker))
+      Players.new(EasyAiPlayer.new(board, 'X'), Player.new('Player 1', 'O'))
     else
       @console.output('Invalid selection! Please try again.')
-      select_players(board, player1_marker, player2_marker)
+      select_players(board)
     end
   end
 end
