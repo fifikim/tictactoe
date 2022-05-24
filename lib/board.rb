@@ -3,7 +3,7 @@
 class Board
   attr_reader :spaces
 
-  def initialize(spaces = default_spaces)
+  def initialize(spaces = (1..9).to_a)
     @spaces = spaces
   end
 
@@ -22,8 +22,8 @@ class Board
   end
 
   def first_free(markers)
-    first_space = default_spaces.find { |space| !occupied_space?(space, markers) }
-    first_space.to_s
+    index = @spaces.find_index { |space| !markers.include? space }
+    convert_to_space(index)
   end
 
   private
@@ -34,5 +34,9 @@ class Board
 
   def convert_to_index(space)
     space.to_i - 1
+  end
+
+  def convert_to_space(index)
+    (index + 1).to_s
   end
 end
