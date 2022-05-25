@@ -9,6 +9,10 @@ class Console
     output(instruction)
   end
 
+  def menu_error
+    output('Invalid selection! Please choose from the numbers listed above.')
+  end
+
   def board(board)
     current_board = board_template(board.spaces)
     output(current_board)
@@ -43,8 +47,8 @@ class Console
   end
 
   def player_types
-    "Who would you like to play against?\n" \
-      "1 - Player\n" \
+    "\nWho would you like to play against?\n" \
+      "1 - Another player\n" \
       "2 - Computer\n"
   end
 

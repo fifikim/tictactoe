@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'player'
+require_relative 'human_player'
 require_relative 'easy_ai'
 
 module PlayerBuilder
@@ -8,7 +8,7 @@ module PlayerBuilder
     if ai_player? name
       EasyAiPlayer.new(name, 'X')
     else
-      Player.new(name, 'X')
+      HumanPlayer.new(name, 'X')
     end
   end
 
@@ -16,7 +16,7 @@ module PlayerBuilder
     if ai_player? name
       EasyAiPlayer.new(name, 'O')
     else
-      Player.new(name, 'O')
+      HumanPlayer.new(name, 'O')
     end
   end
 

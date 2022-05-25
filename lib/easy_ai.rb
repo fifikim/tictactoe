@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
-class EasyAiPlayer
+class EasyAiPlayer < Player
   attr_reader :name, :marker
-
-  def initialize(name, marker)
-    @name = name
-    @marker = marker
-  end
 
   def select(board, markers)
     board.first_free(markers)

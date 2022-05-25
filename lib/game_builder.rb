@@ -7,23 +7,26 @@ require_relative 'players_builder'
 module GameBuilder
   include PlayersBuilder
 
-  def configure_game
-    board = Board.new
-    
-    @console.output("Game Options:\n\n")
+  def configure_game    
+    @console.output("Game Options:\n")
 
     @console.player_menu
-    unordered_players = select_players(board)
+    unordered_players = select_players
 
     @console.order_menu(unordered_players)
     ordered_players = select_order(unordered_players)
+
+    board = Board.new
+    
+    ### builder = GameBuilder.new
+    ### builder.build_game
 
     Game.new(board, ordered_players, @console)
   end
 
   private
 
-  def select_players(board)
+  def select_players
     player_type = $stdin.gets.strip
 
     case player_type
@@ -32,8 +35,8 @@ module GameBuilder
     when '2'
       ['Computer', 'Player 1']
     else
-      @console.output('Invalid selection! Please choose from the numbers listed above.')
-      select_players(board)
+      @console.menu_error
+      select_players
     end
   end
 
@@ -46,7 +49,7 @@ module GameBuilder
     when '2'
       create_players(unordered_players[1], unordered_players[0])
     else
-      @console.output('Invalid selection! Please choose from the numbers listed above.')
+      @console.menu_error
       select_order(unordered_players)
     end
   end

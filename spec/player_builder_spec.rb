@@ -2,7 +2,7 @@
 
 require 'player_builder'
 require 'easy_ai'
-require 'player'
+require 'human_player'
 
 describe PlayerBuilder do
   describe '.create_first_player' do
@@ -10,7 +10,7 @@ describe PlayerBuilder do
 
     {
       'Computer' => EasyAiPlayer,
-      'not Computer' => Player
+      'not Computer' => HumanPlayer
     }.each do |type, class_name|
       context "when first player is #{type}" do
         before do
@@ -33,7 +33,7 @@ describe PlayerBuilder do
 
     {
       'Computer' => EasyAiPlayer,
-      'not Computer' => Player
+      'not Computer' => HumanPlayer
     }.each do |type, class_name|
       context "when second player is #{type}" do
         before do

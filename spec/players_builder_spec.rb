@@ -8,10 +8,10 @@ describe PlayersBuilder do
     let(:main_double) { Class.new { extend PlayersBuilder } }
 
     [
-      ['Player 1', 'Player 2', Player, Player],
-      ['Player 2', 'Player 1', Player, Player],
-      ['Computer', 'Player 1', EasyAiPlayer, Player],
-      ['Player 1', 'Computer', Player, EasyAiPlayer]
+      ['Player 1', 'Player 2', HumanPlayer, HumanPlayer],
+      ['Player 2', 'Player 1', HumanPlayer, HumanPlayer],
+      ['Computer', 'Player 1', EasyAiPlayer, HumanPlayer],
+      ['Player 1', 'Computer', HumanPlayer, EasyAiPlayer]
     ].each do |players|
       context "when names are #{players[0]} and #{players[1]}" do
         before do

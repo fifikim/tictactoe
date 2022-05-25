@@ -7,12 +7,4 @@ class Player
     @name = name
     @marker = marker
   end
-
-  def select(*)
-    $stdin.gets
-  end
-
-  def turn_message
-    "#{@name}'s move:"
-  end
 end
