@@ -1,28 +1,25 @@
 # frozen_string_literal: true
 
-require_relative 'human_player'
-require_relative 'easy_ai'
+require_relative 'player'
 
-module PlayerBuilder
-  def create_first_player(name)
-    if ai_player? name
-      EasyAiPlayer.new(name, 'X')
-    else
-      HumanPlayer.new(name, 'X')
-    end
+class PlayerBuilder
+  attr_reader :player
+
+  def self.build
+    builder = new
+    yield(builder)
+    builder.player
   end
 
-  def create_second_player(name)
-    if ai_player? name
-      EasyAiPlayer.new(name, 'O')
-    else
-      HumanPlayer.new(name, 'O')
-    end
+  def initialize
+    @player = Player.new
   end
 
-  private
+  def assign_name(name)
+    @player.name = name
+  end
 
-  def ai_player?(name)
-    name == 'Computer'
+  def assign_marker(marker)
+    @player.marker = marker
   end
 end

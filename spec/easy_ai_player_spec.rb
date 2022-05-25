@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'easy_ai'
+require 'easy_ai_player'
 require 'board'
 
 describe EasyAiPlayer do

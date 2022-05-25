@@ -6,7 +6,7 @@ AllCops:
 Metrics/AbcSize:
   Max: 25
 Metrics/MethodLength:
-  Max: 15
+  Max: 20
 Metrics/BlockLength:
   Max: 30
   Exclude:
@@ -19,6 +19,8 @@ Metrics/BlockLength:
     - ./spec/input_validator_spec.rb
     - ./spec/game_builder_spec.rb
     - ./spec/player_builder_spec.rb
+    - ./spec/easy_ai_player_spec.rb
+    - ./spec/player_selector_spec.rb
 Layout/LineLength:
   Exclude: 
     - ./spec/console_spec.rb

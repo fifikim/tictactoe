@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class HumanPlayer < Player
-  attr_reader :name, :marker
+require_relative 'player'
 
+class HumanPlayer < Player
   def select(*)
     $stdin.gets
   end

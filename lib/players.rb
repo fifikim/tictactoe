@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Players
-  def initialize(player1, player2)
-    @first_player = player1
-    @second_player = player2
+  def initialize(players)
+    @first_player = players[0]
+    @second_player = players[1]
   end
 
   def initial_order
