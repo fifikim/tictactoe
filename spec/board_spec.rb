@@ -14,15 +14,69 @@ describe Board do
     board = Board.new
 
     it 'records an "X" for player 1 in the spaces array at the correct index' do
-      chosen_index = 0
-      board.record_move('X', chosen_index)
+      chosen_space = 1
+      board.record_move('X', chosen_space)
       expect(board.spaces).to eq(['X', 2, 3, 4, 5, 6, 7, 8, 9])
     end
 
     it 'records an "O" for player 2 in the spaces array at the correct index' do
-      chosen_index = 1
-      board.record_move('O', chosen_index)
+      chosen_space = 2
+      board.record_move('O', chosen_space)
       expect(board.spaces).to eq(['X', 'O', 3, 4, 5, 6, 7, 8, 9])
+    end
+  end
+
+  describe '.full?' do
+    it 'returns true if there are no more free spaces on the board' do
+      board = Board.new(%w[X X O O O X X O X])
+      full_board = board.full?(%w[X O])
+      expect(full_board).to be true
+    end
+
+    it 'returns false if there are free spaces on the board' do
+      board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 9])
+      full_board = board.full?(%w[X O])
+      expect(full_board).to be false
+    end
+  end
+
+  describe '.occupied_space?' do
+    board = Board.new(['X', 2, 3, 4, 5, 6, 7, 8, 9])
+
+    it 'returns true if a space has already been marked' do
+      space_occupied = board.occupied_space?('1', %w[X O])
+      expect(space_occupied).to be true
+    end
+
+    it 'returns false if a space is free' do
+      space_occupied = board.occupied_space?('2', %w[X O])
+      expect(space_occupied).to be false
+    end
+  end
+
+  describe '.first_free' do
+    it "returns '1' if the board is empty" do
+      board = Board.new([1, 2, 3, 4, 5, 6, 7, 8, 9])
+      first_free = board.first_free(%w[X O])
+      expect(first_free).to eq('1')
+    end
+
+    it "returns '2' if the first space is occupied" do
+      board = Board.new(['X', 2, 3, 4, 5, 6, 7, 8, 9])
+      first_free = board.first_free(%w[X O])
+      expect(first_free).to eq('2')
+    end
+
+    it "returns '3' if the first two spaces are occupied" do
+      board = Board.new(['X', 'O', 3, 4, 5, 6, 7, 8, 9])
+      first_free = board.first_free(%w[X O])
+      expect(first_free).to eq('3')
+    end
+
+    it "returns '1' if the first space is free and other spaces are occupied" do
+      board = Board.new([1, 'O', 'X', 4, 5, 6, 7, 8, 9])
+      first_free = board.first_free(%w[X O])
+      expect(first_free).to eq('1')
     end
   end
 end

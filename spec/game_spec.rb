@@ -11,6 +11,7 @@ describe Game do
   before do
     @console = Console.new
     @players = Players.new(Player.new('Player 1', 'X'), Player.new('Player 2', 'O'))
+    @markers = %w[X O]
     $stdout = StringIO.new
   end
 
@@ -28,7 +29,7 @@ describe Game do
 
       first_prompt = output.find { |string| string.include?('move:') }
 
-      expect(first_prompt).to eq("Player 1's move:")
+      expect(first_prompt).to include("Player 1's move:")
     end
 
     it 'initializes board to array of numbers' do

@@ -12,13 +12,14 @@ describe Player do
   end
 
   it 'returns the correct value for .mark' do
-    expect(@player.mark).to eq('X')
+    expect(@player.marker).to eq('X')
   end
 
   describe '.select' do
     it 'takes in a player\'s input' do
+      markers = %w[X O]
       expect($stdin).to receive(:gets).and_return('1')
-      @player.select
+      @player.select(markers)
     end
   end
 end

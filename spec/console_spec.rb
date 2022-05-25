@@ -2,25 +2,20 @@
 
 require 'board'
 require 'console'
+require 'player'
+require 'stringio'
 
 describe Console do
   before do
     @console = Console.new
+    $stdout = StringIO.new
   end
 
   it 'should take in a message and print it to the console' do
-    message = 'A console instance printed this test message'
-    expect do
-      @console.output(message)
-    end.to output("A console instance printed this test message\n").to_stdout
-  end
+    @console.output('A console instance printed this test message')
+    output = $stdout.string.split("\n")
 
-  describe '.instructions' do
-    it 'should print instructions to the console' do
-      expect do
-        @console.instructions
-      end.to output("TIC TAC TOE\n\nInstructions:\nEnter the number (1-9) of the space on the board where you want to move.\nPlayer 1 moves first and marks their spaces with an \"X\". Player 2 marks with an \"O\".\nTo win, claim 3 adjacent spaces in a horizontal, vertical, or diagonal line.\nIf there are no free spaces and no player has won, the game will end in a draw.\n\nStarting new game...\n\n").to_stdout
-    end
+    expect(output).to include('A console instance printed this test message')
   end
 
   describe '.board' do
@@ -29,6 +24,23 @@ describe Console do
         board = Board.new((1..9).to_a)
         @console.board(board)
       end.to output("\n 1 | 2 | 3\n---|---|---\n 4 | 5 | 6\n---|---|---\n 7 | 8 | 9\n\n").to_stdout
+    end
+  end
+
+  describe '.instructions' do
+    it 'should print instructions to the console' do
+      @console.instructions
+      output = $stdout.string.split("\n")
+      expect(output).to include('Instructions:')
+    end
+  end
+
+  describe '.player_menu' do
+    it 'should display the player menu' do
+      @console.player_menu
+      output = $stdout.string.split("\n")
+
+      expect(output).to include('Who would you like to play against?')
     end
   end
 end

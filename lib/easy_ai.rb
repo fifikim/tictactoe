@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Player
+class EasyAiPlayer
   attr_reader :name, :marker
 
   def initialize(name, marker)
@@ -8,11 +8,11 @@ class Player
     @marker = marker
   end
 
-  def select(*)
-    $stdin.gets
+  def select(board, markers)
+    board.first_free(markers)
   end
 
   def turn_message
-    "#{@name}'s move:"
+    "#{@name} is processing its move..."
   end
 end
