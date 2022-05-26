@@ -11,7 +11,9 @@ class Main
   def run
     @console.instructions
 
-    game = ConfigurationSelector.select_options(@console)
+    configs = ConfigurationSelector.new(@console)
+    game = configs.select_options
+
     @console.output("\nStarting new game...\n\n")
     game.play
 
