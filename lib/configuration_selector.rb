@@ -5,7 +5,7 @@ require_relative 'order_selector'
 require_relative 'players_builder'
 
 class ConfigurationSelector
-  def self.select(console)
+  def self.select_options(console)
     console.player_menu
     player_names = self.choose_players
 
@@ -24,6 +24,8 @@ class ConfigurationSelector
       builder.console(console)
     end
   end
+
+  private
 
   def self.choose_players
     player_choice = PlayerSelector.select

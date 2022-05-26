@@ -21,11 +21,17 @@ describe PlayerSelector do
       expect(result).to be true
     end
 
-    it 'returns false when an invalid selection is entered' do
-      # TODO: write parameterized tests
-      result = PlayerSelector.validate('3')
-
-      expect(result).to be false
+    {
+      n: 'not a number',
+      '0': 'zero',
+      '10': 'a double-digit integer',
+      ' ': 'an empty space',
+      nil: 'nil'
+    }.each do |invalid_input, type|
+      it "returns false when input is #{type}" do
+        validate = PlayerSelector.validate(invalid_input.to_s)
+        expect(validate).to be false
+      end
     end
   end
 
