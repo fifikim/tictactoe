@@ -22,6 +22,7 @@ Metrics/BlockLength:
     - ./spec/easy_ai_player_spec.rb
     - ./spec/player_selector_spec.rb
     - ./spec/order_selector_spec.rb
+    - ./spec/configuration_selector_spec.rb
 Layout/LineLength:
   Exclude: 
     - ./spec/console_spec.rb
