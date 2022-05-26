@@ -1,44 +1,34 @@
 # frozen_string_literal: true
 
 require_relative 'game'
-require_relative 'board'
-require_relative 'console'
-require_relative 'players'
-require_relative 'player_selector'
-require_relative 'order_selector'
 
-module GameBuilder
-  include PlayerSelector
-  include OrderSelector
+class GameBuilder
+  attr_reader :game
 
-  def configure_game
-    @console = Console.new
-    @console.output("Game Options:\n")
-
-    @console.player_menu
-    unordered_players = select_players
-
-    @console.order_menu(unordered_players)
-    ordered_players = select_order(unordered_players)
-
-    players = build_players(ordered_players)
-
-    board = Board.new
-    Game.new(board, players, @console)
+  def self.build
+    builder = new
+    yield(builder)
+    builder.game
   end
 
-  private
+  def initialize
+    @game = Game.new
+  end
 
-  def build_players(ordered_players)
-    players = ordered_players.map do |player|
-      builder_type = player[:builder_type]
+  def board(board)
+    @game.board = board
+  end
 
-      builder_type.build do |builder|
-        builder.assign_name(player[:name])
-        builder.assign_marker(player[:marker])
-      end
-    end
+  def markers(markers)
+    @game.markers = markers
+  end
 
-    Players.new(players)
+  def players(players)
+    @game.current_player = players.initial_order[0]
+    @game.next_player = players.initial_order[1]
+  end
+
+  def console(console)
+    @game.console = console
   end
 end

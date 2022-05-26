@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WinFinder
+class WinFinder
   COMBOS = [
     [0, 1, 2],
     [3, 4, 5],
@@ -12,7 +12,7 @@ module WinFinder
     [2, 4, 6]
   ].freeze
 
-  def game_won?(board, marker)
+  def self.game_won?(board, marker)
     COMBOS.any? { |combo| combo.all? { |index| board[index] == marker } }
   end
 end

@@ -54,7 +54,7 @@ class Console
 
   def order_types(unordered_players)
     "\nWho should take the first turn?\n" \
-      "1 - #{unordered_players[0][:name]}\n" \
-      "2 - #{unordered_players[1][:name]}\n"
+      "1 - #{unordered_players[0]}\n" \
+      "2 - #{unordered_players[1]}\n"
   end
 end

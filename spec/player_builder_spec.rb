@@ -1,27 +1,43 @@
 # frozen_string_literal: true
 
 require 'player_builder'
-require 'player'
 
 describe PlayerBuilder do
   describe '.build' do
-    before do
-      @test_player = PlayerBuilder.build do |builder|
-        builder.assign_name('Test Player')
-        builder.assign_marker('X')
+    context "when player name is 'Computer'" do
+      before do
+        @player = PlayerBuilder.build('Computer', 'X')
+      end
+
+      it "creates an instance of EasyAiPlayer" do
+        expect(@player).to be_an_instance_of(EasyAiPlayer)
+      end
+
+      it "creates player with the correct name" do
+        expect(@player.name).to eq('Computer')
+      end
+
+      it "creates player with the correct marker" do
+        expect(@player.marker).to eq('X')
       end
     end
 
-    it 'creates an instance of Player' do
-      expect(@test_player).to be_an_instance_of(Player)
-    end
+    context "when player name is not 'Computer'" do
+      before do
+        @player = PlayerBuilder.build('Test Player', 'O')
+      end
 
-    it 'gives new Player object the correct name' do
-      expect(@test_player.name).to eq('Test Player')
-    end
+      it "creates an instance of HumanPlayer" do
+        expect(@player).to be_an_instance_of(HumanPlayer)
+      end
 
-    it 'gives new Player object the correct marker' do
-      expect(@test_player.marker).to eq('X')
+      it "creates player with the correct name" do
+        expect(@player.name).to eq('Test Player')
+      end
+
+      it "creates player with the correct marker" do
+        expect(@player.marker).to eq('O')
+      end
     end
   end
 end

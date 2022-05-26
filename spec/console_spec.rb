@@ -4,8 +4,6 @@ require 'board'
 require 'console'
 require 'player'
 require 'stringio'
-require 'human_player_builder'
-require 'easy_ai_player_builder'
 
 describe Console do
   before do
@@ -48,10 +46,7 @@ describe Console do
   describe '.order_menu' do
     @console = Console.new
     $stdout = StringIO.new
-    unordered_players = [
-      { builder_type: HumanPlayerBuilder, name: 'Test Player 1' },
-      { builder_type: HumanPlayerBuilder, name: 'Test Player 2' }
-    ]
+    unordered_players = ['Test Player 1', 'Test Player 2']
     @console.order_menu(unordered_players)
     output = $stdout.string.split("\n")
 

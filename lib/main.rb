@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 require_relative 'console'
-require_relative 'game_builder'
+require_relative 'configuration_selector'
 
 class Main
-  include GameBuilder
-
   def initialize(console = Console.new)
     @console = console
   end
@@ -13,7 +11,7 @@ class Main
   def run
     @console.instructions
 
-    game = configure_game
+    game = ConfigurationSelector.select(@console)
     @console.output("\nStarting new game...\n\n")
     game.play
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'main'
+require 'configuration_selector'
 require 'stringio'
 
 describe Main do
