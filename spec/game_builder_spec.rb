@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'game_builder'
-require 'game'
-require 'board'
 require 'human_player'
 require 'players'
 require 'console'
