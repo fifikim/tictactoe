@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'game'
-require_relative 'board'
 
 class GameBuilder
   attr_reader :game
@@ -16,8 +15,8 @@ class GameBuilder
     @game = Game.new
   end
 
-  def board
-    @game.board = Board.new
+  def board(board)
+    @game.board = board
   end
 
   def players(players)

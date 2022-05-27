@@ -27,6 +27,10 @@ class Console
     output(menu)
   end
 
+  def board_menu
+    output(board_types)
+  end
+
   private
 
   def instruction
@@ -56,5 +60,13 @@ class Console
     "\nWho should take the first turn?\n" \
       "1 - #{unordered_players[0].name}\n" \
       "2 - #{unordered_players[1].name}\n"
+  end
+
+  def board_types
+    ## can this populate based on BOARD_OPTIONS
+    "\nWhat size board would you like?\n" \
+    "1 - 3x3\n" \
+    "2 - 4x4\n" \
+    "3 - 5x5\n"
   end
 end

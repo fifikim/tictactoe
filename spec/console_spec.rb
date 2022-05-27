@@ -62,4 +62,12 @@ describe Console do
       expect(output).to include('2 - Player 2')
     end
   end
+
+  describe '.board_menu' do
+    it 'should display the board menu' do
+      @console.board_menu
+      output = $stdout.string.split("\n")
+      expect(output).to include('What size board would you like?')
+    end
+  end
 end

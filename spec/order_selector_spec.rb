@@ -51,8 +51,9 @@ describe OrderSelector do
         selection = '1'
         unordered_players = [HumanPlayer.new('Player 1', 'X'), HumanPlayer.new('Player 2', 'O')]
         players = OrderSelector.record(selection, unordered_players)
+        first_player = players.initial_order[0].name
 
-        expect(players.first_player.name).to eq('Player 1')
+        expect(first_player).to eq('Player 1')
       end
     end
 
@@ -61,8 +62,9 @@ describe OrderSelector do
         selection = '2'
         unordered_players = [HumanPlayer.new('Player 1', 'X'), HumanPlayer.new('Player 2', 'O')]
         players = OrderSelector.record(selection, unordered_players)
+        first_player = players.initial_order[0].name
 
-        expect(players.first_player.name).to eq('Player 2')
+        expect(first_player).to eq('Player 2')
       end
     end
   end
