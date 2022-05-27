@@ -12,7 +12,6 @@ describe Game do
   before do
     @console = Console.new
     @players = Players.new([HumanPlayer.new('Player 1', 'X'), HumanPlayer.new('Player 2', 'O')])
-    @markers = %w[X O]
     $stdout = StringIO.new
   end
 
