@@ -19,13 +19,10 @@ class GameBuilder
     @game.board = board
   end
 
-  def markers(markers)
-    @game.markers = markers
-  end
-
   def players(players)
     @game.current_player = players.initial_order[0]
     @game.next_player = players.initial_order[1]
+    @game.markers = [@game.current_player.marker, @game.next_player.marker]
   end
 
   def console(console)

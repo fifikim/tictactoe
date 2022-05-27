@@ -2,7 +2,7 @@
 
 require 'board'
 require 'console'
-require 'player'
+require 'human_player'
 require 'stringio'
 
 describe Console do
@@ -46,7 +46,7 @@ describe Console do
   describe '.order_menu' do
     @console = Console.new
     $stdout = StringIO.new
-    unordered_players = ['Test Player 1', 'Test Player 2']
+    unordered_players = [HumanPlayer.new('Player 1', 'X'), HumanPlayer.new('Player 2', 'O')]
     @console.order_menu(unordered_players)
     output = $stdout.string.split("\n")
 
@@ -55,11 +55,11 @@ describe Console do
     end
 
     it "should correctly display the first player's name" do
-      expect(output).to include('1 - Test Player 1')
+      expect(output).to include('1 - Player 1')
     end
 
     it "should correctly display the second player's name" do
-      expect(output).to include('2 - Test Player 2')
+      expect(output).to include('2 - Player 2')
     end
   end
 end

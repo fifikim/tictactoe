@@ -32,9 +32,9 @@ class Game
     elsif @board.occupied_space?(input, @markers)
       @console.output('Invalid move! Please select a free space:')
       select_space
+    else
+      @board.record_move(@current_player.marker, input)
     end
-
-    @board.record_move(@current_player.marker, input)
   end
 
   def check_over

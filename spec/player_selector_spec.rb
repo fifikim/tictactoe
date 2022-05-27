@@ -2,13 +2,14 @@
 
 require 'player_selector'
 require 'console'
+require 'input'
 require 'stringio'
 
 describe PlayerSelector do
   describe '.select' do
     it 'takes in a user input' do
       allow($stdin).to receive(:gets).and_return('1')
-      selection = PlayerSelector.select
+      selection = Input.get
 
       expect(selection).to eq('1')
     end
@@ -37,20 +38,20 @@ describe PlayerSelector do
 
   describe '.record' do
     context "when '1' is selected" do
-      it "returns an array with 'Player 1' and 'Player 2'" do
+      it 'returns an array with 2 HumanPlayers' do
         selection = '1'
         players = PlayerSelector.record(selection)
 
-        expect(players).to eq(['Player 1', 'Player 2'])
+        expect([players[0].class, players[1].class]).to eq([HumanPlayer, HumanPlayer])
       end
     end
 
     context "when '2' is selected" do
-      it "returns an array with 'Computer' and 'Player 1'" do
+      it 'returns an array with an EasyAiPlayer and a HumanPlayer' do
         selection = '2'
         players = PlayerSelector.record(selection)
 
-        expect(players).to eq(['Computer', 'Player 1'])
+        expect([players[0].class, players[1].class]).to eq([EasyAiPlayer, HumanPlayer])
       end
     end
   end

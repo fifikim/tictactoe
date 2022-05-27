@@ -10,16 +10,14 @@ require 'console'
 describe GameBuilder do
   before do
     @board = Board.new
-    @markers = %w[X O]
-    @player1 = HumanPlayer.new('Test Player 1', @markers[0])
-    @player2 = HumanPlayer.new('Test Player 1', @markers[1])
+    @player1 = HumanPlayer.new('Test Player 1', 'X')
+    @player2 = HumanPlayer.new('Test Player 2', 'O')
     @players = Players.new([@player1, @player2])
     @console = Console.new
     @game = GameBuilder.build do |builder|
       builder.board(@board)
       builder.players(@players)
       builder.console(@console)
-      builder.markers(@markers)
     end
   end
 

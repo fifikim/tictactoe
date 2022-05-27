@@ -4,35 +4,31 @@ require_relative 'board'
 require_relative 'game_builder'
 require_relative 'player_selector'
 require_relative 'order_selector'
-require_relative 'players_builder'
+require_relative 'input'
 
-class ConfigurationSelector
+class ConfigSelector
   def initialize(console)
     @console = console
   end
 
   def select_options
     @console.player_menu
-    player_names = choose_players
+    unordered_players = choose_players
 
-    @console.order_menu(player_names)
-    ordered_players = choose_order(player_names)
+    @console.order_menu(unordered_players)
+    ordered_players = choose_order(unordered_players)
 
     board = Board.new
-    markers = %w[X O]
-
-    players = PlayersBuilder.build(ordered_players, markers)
 
     GameBuilder.build do |builder|
       builder.board(board)
-      builder.markers(markers)
-      builder.players(players)
+      builder.players(ordered_players)
       builder.console(@console)
     end
   end
 
   def choose_players
-    player_choice = PlayerSelector.select
+    player_choice = Input.get
 
     if PlayerSelector.validate(player_choice)
       PlayerSelector.record(player_choice)
@@ -43,7 +39,7 @@ class ConfigurationSelector
   end
 
   def choose_order(unordered_players)
-    order_choice = OrderSelector.select
+    order_choice = Input.get
 
     if OrderSelector.validate(order_choice)
       OrderSelector.record(order_choice, unordered_players)

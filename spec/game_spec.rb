@@ -23,7 +23,6 @@ describe Game do
         builder.board(@board)
         builder.players(@players)
         builder.console(@console)
-        builder.markers(@markers)
       end
     end
 
@@ -50,7 +49,6 @@ describe Game do
           builder.board(@board)
           builder.players(@players)
           builder.console(@console)
-          builder.markers(@markers)
         end
 
         allow($stdin).to receive(:gets).and_return('8', '4', '1')
@@ -69,7 +67,6 @@ describe Game do
           builder.board(@board)
           builder.players(@players)
           builder.console(@console)
-          builder.markers(@markers)
         end
 
         allow($stdin).to receive(:gets).and_return('8', '1', '4')
@@ -88,7 +85,6 @@ describe Game do
           builder.board(@board)
           builder.players(@players)
           builder.console(@console)
-          builder.markers(@markers)
         end
 
         allow($stdin).to receive(:gets).and_return('7', '9', '8')
@@ -108,7 +104,6 @@ describe Game do
         builder.board(@board)
         builder.players(@players)
         builder.console(@console)
-        builder.markers(@markers)
       end
     end
 

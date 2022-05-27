@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'console'
-require 'configuration_selector'
+require 'config_selector'
 require 'game'
 require 'stringio'
 
-describe ConfigurationSelector do
+describe ConfigSelector do
   describe '.select_options' do
     before do
       @console = Console.new
@@ -15,7 +15,7 @@ describe ConfigurationSelector do
     context 'when Player Menu choice 1 and Order Menu choice 1 are selected' do
       it 'creates a Game with the correct configurations' do
         allow($stdin).to receive(:gets).and_return('1', '1')
-        game = ConfigurationSelector.new(@console).select_options
+        game = ConfigSelector.new(@console).select_options
         expect(game.current_player.name).to eq('Player 1')
       end
     end
@@ -23,7 +23,7 @@ describe ConfigurationSelector do
     context 'when Player Menu choice 1 and Order Menu choice 2 are selected' do
       it 'creates a Game with the correct configurations' do
         allow($stdin).to receive(:gets).and_return('1', '2')
-        game = ConfigurationSelector.new(@console).select_options
+        game = ConfigSelector.new(@console).select_options
         expect(game.current_player.name).to eq('Player 2')
       end
     end
@@ -31,16 +31,16 @@ describe ConfigurationSelector do
     context 'when Player Menu choice 2 and Order Menu choice 1 are selected' do
       it 'creates a Game with the correct configurations' do
         allow($stdin).to receive(:gets).and_return('2', '1')
-        game = ConfigurationSelector.new(@console).select_options
-        expect(game.current_player.name).to eq('Computer')
+        game = ConfigSelector.new(@console).select_options
+        expect(game.current_player.name).to eq('Player 1 (Computer)')
       end
     end
 
     context 'when Player Menu choice 2 and Order Menu choice 2 are selected' do
       it 'creates a Game with the correct configurations' do
         allow($stdin).to receive(:gets).and_return('2', '2')
-        game = ConfigurationSelector.new(@console).select_options
-        expect(game.current_player.name).to eq('Player 1')
+        game = ConfigSelector.new(@console).select_options
+        expect(game.current_player.name).to eq('Player 2')
       end
     end
 
@@ -54,7 +54,7 @@ describe ConfigurationSelector do
       }.each do |invalid_input, type|
         it "displays an error message when selection is #{type}" do
           allow($stdin).to receive(:gets).and_return(invalid_input.to_s, '2')
-          ConfigurationSelector.new(@console).select_options
+          ConfigSelector.new(@console).select_options
 
           output = $stdout.string.split("\n")
           expect(output).to include('Invalid selection! Please choose from the numbers listed above.')
