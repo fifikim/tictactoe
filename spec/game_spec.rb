@@ -66,7 +66,7 @@ describe Game do
           builder.console(@console)
         end
 
-        allow($stdin).to receive(:gets).and_return( '1', '5', '4', '2', '3', '8')
+        allow($stdin).to receive(:gets).and_return('1', '5', '4', '2', '3', '8')
 
         @game.play
         output = $stdout.string.split("\n")
@@ -83,7 +83,7 @@ describe Game do
           builder.console(@console)
         end
 
-        allow($stdin).to receive(:gets).and_return( '5', '2', '8', '7', '4', '6', '3', '1', '9')
+        allow($stdin).to receive(:gets).and_return('5', '2', '8', '7', '4', '6', '3', '1', '9')
 
         @game.play
         output = $stdout.string.split("\n")

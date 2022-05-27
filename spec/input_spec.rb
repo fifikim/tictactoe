@@ -4,7 +4,7 @@ require 'input'
 
 describe Input do
   describe '.get' do
-    it 'returns input received from $stdin' do 
+    it 'returns input received from $stdin' do
       allow($stdin).to receive(:gets).and_return('8')
       input = Input.get
 
