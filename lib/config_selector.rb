@@ -19,10 +19,10 @@ class ConfigSelector
     ordered_players = choose_order(unordered_players)
 
     @console.board_menu
-    board = choose_board
+    board_size = choose_board
 
     GameBuilder.build do |builder|
-      builder.board(board)
+      builder.board(board_size)
       builder.players(ordered_players)
       builder.console(@console)
     end

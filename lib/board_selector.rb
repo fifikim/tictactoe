@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative 'board'
+# require_relative 'board'
 
 class BoardSelector
   BOARD_OPTIONS = {
-    '1' => (1..9).to_a,
-    '2' => (1..16).to_a,
-    '3' => (1..25).to_a
+    '1' => 9,
+    '2' => 16,
+    '3' => 25
   }.freeze
 
   def self.select
@@ -18,6 +18,6 @@ class BoardSelector
   end
 
   def self.record(selection)
-    Board.new(BOARD_OPTIONS[selection])
+    BOARD_OPTIONS[selection]
   end
 end

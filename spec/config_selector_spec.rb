@@ -1,21 +1,24 @@
 # frozen_string_literal: true
 
-require 'console'
+require 'main_console'
 require 'config_selector'
+require 'game_console'
+require 'main_console'
 require 'game'
 require 'stringio'
 
 describe ConfigSelector do
   describe '.select_options' do
     before do
-      @console = Console.new
+      @console = MainConsole.new
       $stdout = StringIO.new
     end
 
     context 'when Player Menu choice 1 is selected' do
       it 'creates a Game with 2 HumanPlayers' do
         allow($stdin).to receive(:gets).and_return('1')
-        game = ConfigSelector.new(@console).select_options
+        selector = ConfigSelector.new(@console)
+        game = selector.select_options
         player_types = [game.current_player.class, game.next_player.class]
 
         expect(player_types).to eq([HumanPlayer, HumanPlayer])

@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class InputValidator
-  def self.invalid_selection?(input)
-    /^([1-9])$/.match(input).nil?
+  def initialize(board_size)
+    @board_size = board_size
+  end
+
+  def invalid_selection?(input)
+    !(1..@board_size).include? input.to_i
   end
 end

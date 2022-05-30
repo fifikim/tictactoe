@@ -4,7 +4,7 @@ require_relative 'input_validator'
 require_relative 'win_finder'
 
 class Game
-  attr_accessor :board, :current_player, :next_player, :markers, :console, :game_over
+  attr_accessor :board, :current_player, :next_player, :markers, :input_validator, :win_finder, :console, :game_over
 
   def play
     take_turn until @game_over
@@ -26,8 +26,9 @@ class Game
   def select_space
     input = @current_player.select(@board, @markers)
 
-    if InputValidator.invalid_selection? input
-      @console.output('Invalid character! Please select an integer from 1-9:')
+    if @input_validator.invalid_selection? input
+      ### change this to max number
+      @console.output("Invalid character! Please select an integer from 1-#{$max_num}:")
       select_space
     elsif @board.occupied_space?(input, @markers)
       @console.output('Invalid move! Please select a free space:')
@@ -38,7 +39,7 @@ class Game
   end
 
   def check_over
-    if WinFinder.game_won?(@board.spaces, @current_player.marker)
+    if @win_finder.game_won?(@board.spaces, @current_player.marker)
       end_game
       @console.output("Game over! #{@current_player.name} wins!")
     elsif @board.full?(@markers)
