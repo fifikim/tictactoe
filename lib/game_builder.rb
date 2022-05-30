@@ -2,7 +2,7 @@
 
 require_relative 'game'
 require_relative 'board'
-require_relative 'console'
+require_relative 'game_console'
 require_relative 'win_finder'
 require_relative 'input_validator'
 

@@ -28,7 +28,7 @@ describe GameConsole do
       it 'should display the instructions with correct input range of 1-9' do
         @console.instructions
         @output = $stdout.string.split("\n")
-        expect(@output).to include("Enter the number (1-9) of the space on the board where you want to move.")
+        expect(@output).to include('Enter the number (1-9) of the space on the board where you want to move.')
       end
     end
 
@@ -36,7 +36,7 @@ describe GameConsole do
       it 'should print the current state of the board in a 3x3 template' do
         @console.board(@board)
         @output = $stdout.string.split("\n")
-        expect(@output).to include("  1 |  2 |  3 ")
+        expect(@output).to include('  1 |  2 |  3 ')
       end
     end
   end
@@ -51,7 +51,7 @@ describe GameConsole do
       it 'should display the instructions with correct input range of 1-16' do
         @console.instructions
         @output = $stdout.string.split("\n")
-        expect(@output).to include("Enter the number (1-16) of the space on the board where you want to move.")
+        expect(@output).to include('Enter the number (1-16) of the space on the board where you want to move.')
       end
     end
 
@@ -60,7 +60,7 @@ describe GameConsole do
         @console.board(@board)
         @output = $stdout.string.split("\n")
 
-        expect(@output).to include("  1 |  2 |  3 |  4 ")
+        expect(@output).to include('  1 |  2 |  3 |  4 ')
       end
     end
   end
@@ -76,7 +76,7 @@ describe GameConsole do
         @console.instructions
         @output = $stdout.string.split("\n")
 
-        expect(@output).to include("Enter the number (1-25) of the space on the board where you want to move.")
+        expect(@output).to include('Enter the number (1-25) of the space on the board where you want to move.')
       end
     end
 
@@ -85,7 +85,7 @@ describe GameConsole do
         @console.board(@board)
         @output = $stdout.string.split("\n")
 
-        expect(@output).to include("  1 |  2 |  3 |  4 |  5 ")
+        expect(@output).to include('  1 |  2 |  3 |  4 |  5 ')
       end
     end
   end

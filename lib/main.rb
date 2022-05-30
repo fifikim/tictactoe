@@ -14,8 +14,6 @@ class Main
     configs = ConfigSelector.new(@console)
     game = configs.select_options
 
-    @console.instructions
-
     @console.output("\nStarting new game...\n\n")
     game.play
 

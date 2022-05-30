@@ -3,7 +3,6 @@
 require 'main'
 require 'stringio'
 
-#TODO: why are these tests failing
 describe Main do
   describe '.run' do
     before do
@@ -11,7 +10,7 @@ describe Main do
       $stdout = StringIO.new
 
       allow($stdin).to receive(:gets).and_return('1', '2', '1', '1', '2', '3', '4', '5', '6', '7', '8', '9')
-      
+
       @main.run
       @output = $stdout.string.split("\n")
     end
@@ -25,16 +24,16 @@ describe Main do
     end
 
     it 'prints Tic Tac Toe instructions' do
-      expect(@output).to include('TIC TAC TOE')
+      expect(@output).to include('Welcome to TIC TAC TOE')
     end
 
-    # it "initializes as player 1's turn by default" do
-    #   over_message = @output.find { |string| string.include?('Game over!') }
-    #   expect(over_message).to include('Game over!')
-    # end
+    it "initializes as player 1's turn by default" do
+      over_message = @output.find { |string| string.include?('Game over!') }
+      expect(over_message).to include('Game over!')
+    end
 
-    # it 'displays a goodbye message after the game ends' do
-    #   expect(@output).to include('Thanks for playing! Goodbye.')
-    # end
+    it 'displays a goodbye message after the game ends' do
+      expect(@output).to include('Thanks for playing! Goodbye.')
+    end
   end
 end

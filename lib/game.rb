@@ -27,8 +27,7 @@ class Game
     input = @current_player.select(@board, @markers)
 
     if @input_validator.invalid_selection? input
-      ### change this to max number
-      @console.output("Invalid character! Please select an integer from 1-#{$max_num}:")
+      @console.invalid_message
       select_space
     elsif @board.occupied_space?(input, @markers)
       @console.output('Invalid move! Please select a free space:')

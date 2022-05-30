@@ -3,15 +3,14 @@
 require 'input_validator'
 require 'board'
 
-
-# TODO test for all board sizes
+# TODO: test for all board sizes
 
 describe InputValidator do
   describe '.invalid_selection?' do
     before do
       @board = Board.new
     end
-    
+
     context 'when checking selected spaces for a 3x3 board' do
       {
         n: 'not a number',
@@ -77,6 +76,5 @@ describe InputValidator do
         expect(validate).to be false
       end
     end
-
   end
 end

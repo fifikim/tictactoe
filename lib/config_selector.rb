@@ -24,7 +24,6 @@ class ConfigSelector
     GameBuilder.build do |builder|
       builder.board(board_size)
       builder.players(ordered_players)
-      builder.console(@console)
     end
   end
 

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'order_selector'
-require 'console'
 require 'human_player'
 require 'players'
 require 'input'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'console'
 require_relative 'board'
 
@@ -9,6 +11,10 @@ class GameConsole < Console
 
   def instructions
     output(instruction)
+  end
+
+  def invalid_message
+    output("Invalid character! Please select an integer from 1-#{@board_size}:")
   end
 
   def board(current_board)
@@ -31,13 +37,13 @@ class GameConsole < Console
     format_board(rows)
   end
 
-  def format_board(rows) 
+  def format_board(rows)
     board = rows.map { |row| format_row(row) }.join(horizontal_line)
     "\n#{board}\n"
   end
 
   def format_row(row)
-    formatted_row = row.map { |space| format_space(space) }.join("|")
+    formatted_row = row.map { |space| format_space(space) }.join('|')
     "#{formatted_row}\n"
   end
 
@@ -51,8 +57,8 @@ class GameConsole < Console
 
   def horizontal_line
     spacer_line = []
-    (@line_length).times { |i| spacer_line << "----" }
-    spacer_line.join("|").concat("\n")
+    @line_length.times { |_i| spacer_line << '----' }
+    spacer_line.join('|').concat("\n")
   end
 end
 

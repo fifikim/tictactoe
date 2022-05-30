@@ -96,7 +96,7 @@ describe Game do
       end
     end
 
-    #TODO: why is this test failing
+    # TODO: why is this test failing
     describe 'when invalid character is selected' do
       it 're-prompts player for input until valid char is selected' do
         allow($stdin).to receive(:gets).and_return('0', '17', '2', '3', '4', '5', '6', '7', '8', '9')

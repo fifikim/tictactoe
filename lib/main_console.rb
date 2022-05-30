@@ -1,9 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'console'
 
 class MainConsole < Console
-  def initialize
-  end
-
   def welcome
     output(welcome_msg)
   end
@@ -48,8 +47,8 @@ class MainConsole < Console
   def board_types
     ## can this populate based on BOARD_OPTIONS
     "\nWhat size board would you like?\n" \
-    "1 - 3x3\n" \
-    "2 - 4x4\n" \
-    "3 - 5x5\n"
+      "1 - 3x3\n" \
+      "2 - 4x4\n" \
+      "3 - 5x5\n"
   end
-end 
+end

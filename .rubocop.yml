@@ -23,6 +23,9 @@ Metrics/BlockLength:
     - ./spec/player_selector_spec.rb
     - ./spec/order_selector_spec.rb
     - ./spec/config_selector_spec.rb
+    - ./spec/board_selector_spec.rb
+    - ./spec/game_console_spec.rb
+    - ./spec/main_console_spec.rb
 Layout/LineLength:
   Exclude: 
     - ./spec/console_spec.rb
