@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 require 'board_selector'
-require 'console'
-require 'human_player'
-require 'players'
 require 'input'
-require 'stringio'
 
 describe BoardSelector do
   describe '.select' do

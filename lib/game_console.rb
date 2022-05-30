@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'console'
-require_relative 'board'
 
 class GameConsole < Console
   def initialize(board_size)
@@ -62,11 +61,3 @@ class GameConsole < Console
     spacer_line.join('|').concat("\n")
   end
 end
-
-# console = GameConsole.new(9)
-# board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 9])
-
-# console = GameConsole.new(16)
-# board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 9, 10, 11, 12, 13, 14, 15, 16])
-
-# p console.board(board)

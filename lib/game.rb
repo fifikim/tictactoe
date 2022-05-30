@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'input_validator'
-require_relative 'win_finder'
-
 class Game
   attr_accessor :board, :current_player, :next_player, :markers, :input_validator, :win_finder, :console, :game_over
 

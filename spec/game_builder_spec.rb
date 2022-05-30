@@ -4,7 +4,6 @@ require 'game_builder'
 require 'human_player'
 require 'players'
 require 'game_console'
-require 'board'
 
 describe GameBuilder do
   before do

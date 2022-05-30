@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'player_selector'
-require 'console'
 require 'input'
 require 'stringio'
 

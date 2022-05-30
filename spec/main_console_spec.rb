@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'board'
 require 'main_console'
 require 'human_player'
 require 'stringio'

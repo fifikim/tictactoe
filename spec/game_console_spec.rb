@@ -2,7 +2,6 @@
 
 require 'board'
 require 'game_console'
-require 'human_player'
 require 'stringio'
 
 describe GameConsole do

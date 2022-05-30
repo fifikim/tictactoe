@@ -32,8 +32,4 @@ class GameBuilder
     @game.next_player = players.initial_order[1]
     @game.markers = [@game.current_player.marker, @game.next_player.marker]
   end
-
-  # def console(console)
-  #   @game.console = console
-  # end
 end

@@ -2,8 +2,6 @@
 
 require 'main_console'
 require 'config_selector'
-require 'game_console'
-require 'game'
 require 'stringio'
 
 describe ConfigSelector do

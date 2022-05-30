@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 require 'game'
-require 'board'
 require 'human_player'
 require 'players'
-require 'game_console'
-require 'stringio'
 require 'game_builder'
+require 'stringio'
 
 describe Game do
   before do

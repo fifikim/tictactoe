@@ -2,7 +2,6 @@
 
 require 'order_selector'
 require 'human_player'
-require 'players'
 require 'input'
 require 'stringio'
 

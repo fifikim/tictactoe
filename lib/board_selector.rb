@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# require_relative 'board'
-
 class BoardSelector
   BOARD_OPTIONS = {
     '1' => 9,
