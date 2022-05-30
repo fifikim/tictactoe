@@ -86,7 +86,7 @@ describe Game do
     end
   end
 
-  context 'when invalid input is received' do
+  context 'when invalid input is entered' do
     before do
       @game = GameBuilder.build do |builder|
         builder.board(@board_size)
@@ -94,19 +94,26 @@ describe Game do
       end
     end
 
-    # TODO: why is this test failing
-    describe 'when invalid character is selected' do
-      it 're-prompts player for input until valid char is selected' do
-        allow($stdin).to receive(:gets).and_return('0', '17', '2', '3', '4', '5', '6', '7', '8', '9')
+    describe 'when an invalid character is entered' do
+      {
+        n: 'a letter',
+        '0': 'zero',
+        '26': 'an out of range number',
+        ' ': 'an empty space',
+        nil: 'nil'
+      }.each do |invalid_input, type|
+        it "re-prompts player for input when #{type} is selected" do
+          allow($stdin).to receive(:gets).and_return(invalid_input.to_s, '1', '2', '3', '4', '5', '6', '7', '8', '9')
 
-        @game.play
-        output = $stdout.string.split("\n")
+          @game.play
+          output = $stdout.string.split("\n")
 
-        expect(output).to include('Invalid character! Please select an integer from 1-9:')
+          expect(output).to include('Invalid character! Please select an integer from 1-9:')
+        end
       end
     end
 
-    describe 'when occupied space is selected' do
+    describe 'when an occupied space is selected' do
       it 're-prompts player for input until free space is selected' do
         allow($stdin).to receive(:gets).and_return('1', '1', '2', '3', '4', '5', '6', '7', '8', '9')
 
