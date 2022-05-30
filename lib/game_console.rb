@@ -5,6 +5,7 @@ require_relative 'board'
 
 class GameConsole < Console
   def initialize(board_size)
+    super
     @board_size = board_size
     @line_length = Math.sqrt(board_size).to_i
   end
