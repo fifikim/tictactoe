@@ -30,7 +30,7 @@ class MainConsole < Console
 
   def welcome_msg
     "Welcome to TIC TAC TOE\n\n" \
-      "Select game options:\n\n"
+      "Select game options:\n"
   end
 
   def list_options(option_type)
