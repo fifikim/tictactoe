@@ -4,7 +4,7 @@ require 'main_console'
 require 'human_player'
 require 'stringio'
 
-describe Console do
+describe MainConsole do
   before do
     @console = MainConsole.new
     $stdout = StringIO.new

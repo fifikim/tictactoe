@@ -30,7 +30,7 @@ class ConfigSelector
   private
 
   def choose_players
-    player_choice = Input.get
+    player_choice = Input.choose_option
 
     if PlayerSelector.validate(player_choice)
       PlayerSelector.record(player_choice)
@@ -41,7 +41,7 @@ class ConfigSelector
   end
 
   def choose_order(unordered_players)
-    order_choice = Input.get
+    order_choice = Input.choose_option
 
     if OrderSelector.validate(order_choice)
       OrderSelector.record(order_choice, unordered_players)
@@ -52,7 +52,7 @@ class ConfigSelector
   end
 
   def choose_board
-    order_choice = Input.get
+    order_choice = Input.choose_option
 
     if BoardSelector.validate(order_choice)
       BoardSelector.record(order_choice)
