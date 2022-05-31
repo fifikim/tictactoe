@@ -3,7 +3,6 @@
 require 'input_validator'
 
 describe InputValidator do
-  let(:game_double) { Class.new { extend InputValidator } }
   describe '.invalid_selection?' do
     context 'when an invalid character is selected' do
       {
@@ -14,7 +13,7 @@ describe InputValidator do
         nil: 'nil'
       }.each do |invalid_input, type|
         it "returns true when input is #{type}" do
-          validate = game_double.invalid_selection?(invalid_input.to_s)
+          validate = InputValidator.invalid_selection?(invalid_input.to_s)
           expect(validate).to be true
         end
       end
@@ -22,7 +21,7 @@ describe InputValidator do
 
     context 'when a valid integer is selected' do
       it 'returns false' do
-        validate = game_double.invalid_selection?('8')
+        validate = InputValidator.invalid_selection?('8')
         expect(validate).to be false
       end
     end

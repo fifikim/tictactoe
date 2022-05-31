@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
 class Player
-  attr_reader :name, :marker
+  attr_accessor :name, :marker
 
-  def initialize(name, marker)
+  def initialize(name = nil, marker = nil)
     @name = name
     @marker = marker
-  end
-
-  def select(*)
-    $stdin.gets
-  end
-
-  def turn_message
-    "#{@name}'s move:"
   end
 end

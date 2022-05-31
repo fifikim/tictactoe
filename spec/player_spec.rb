@@ -4,22 +4,14 @@ require 'player'
 
 describe Player do
   before do
-    @player = Player.new('Player 1', 'X')
+    @player = Player.new('Test Player', 'X')
   end
 
   it 'returns the correct value for .name' do
-    expect(@player.name).to eq('Player 1')
+    expect(@player.name).to eq('Test Player')
   end
 
   it 'returns the correct value for .mark' do
     expect(@player.marker).to eq('X')
-  end
-
-  describe '.select' do
-    it 'takes in a player\'s input' do
-      markers = %w[X O]
-      expect($stdin).to receive(:gets).and_return('1')
-      @player.select(markers)
-    end
   end
 end

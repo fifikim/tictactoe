@@ -3,8 +3,6 @@
 require 'win_finder'
 
 describe WinFinder do
-  let(:game_double) { Class.new { extend WinFinder } }
-
   context 'when board contains a winning combination' do
     {
       '0, 1, 2': %w[X X X 4 5 6 7 8 9],
@@ -17,7 +15,7 @@ describe WinFinder do
       '2, 4, 6': %w[1 2 X 4 X 6 X 8 9]
     }.each do |indices, array|
       it "returns true for a win at indices #{indices}" do
-        found = game_double.game_won?(array, 'X')
+        found = WinFinder.game_won?(array, 'X')
         expect(found).to be true
       end
     end
@@ -26,7 +24,7 @@ describe WinFinder do
   context 'when board does not contain a winning combination' do
     it 'returns false' do
       board = %w[X X O O O X X O X]
-      found = game_double.game_won?(board, 'X')
+      found = WinFinder.game_won?(board, 'X')
       expect(found).to be false
     end
   end
