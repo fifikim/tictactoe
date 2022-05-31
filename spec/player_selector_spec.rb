@@ -24,7 +24,7 @@ describe PlayerSelector do
     {
       'n' => 'not a number',
       -1 => 'a negative number',
-      10 => 'a double-digit integer',
+      3 => 'an out of range number',
       ' ' => 'an empty space',
       nil => 'nil'
     }.each do |invalid_input, type|
