@@ -23,7 +23,7 @@ describe BoardSelector do
     {
       'n' => 'not a number',
       -1 => 'a negative number',
-      10 => 'a double-digit integer',
+      4 => 'an out of range number',
       ' ' => 'an empty space',
       nil => 'nil'
     }.each do |invalid_input, type|

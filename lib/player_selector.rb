@@ -10,7 +10,7 @@ $PLAYER_OPTIONS = [
 
 class PlayerSelector
   def self.validate(selection)
-    range = 0..$PLAYER_OPTIONS.length
+    range = 0...$PLAYER_OPTIONS.length
     range.include? selection
   end
 

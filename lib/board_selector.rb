@@ -8,7 +8,7 @@ $BOARD_OPTIONS = [
 
 class BoardSelector
   def self.validate(selection)
-    range = 0..$BOARD_OPTIONS.length
+    range = 0...$BOARD_OPTIONS.length
     range.include? selection
   end
 
