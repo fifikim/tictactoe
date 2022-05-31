@@ -6,7 +6,7 @@ require 'player'
 describe Players do
   context 'when Player 1 is added first' do
     before do
-      @players = Players.new(Player.new('Player 1', 'X'), Player.new('Player 2', 'O'))
+      @players = Players.new([Player.new('Player 1', 'X'), Player.new('Player 2', 'O')])
     end
 
     it 'shows the correct name for player 1' do
@@ -28,7 +28,7 @@ describe Players do
 
   context 'when the order of players are reversed' do
     before do
-      @players = Players.new(Player.new('Player 2', '0'), Player.new('Player 1', 'X'))
+      @players = Players.new([Player.new('Player 2', '0'), Player.new('Player 1', 'X')])
     end
 
     it 'shows the correct name for player 1' do

@@ -9,6 +9,10 @@ class Console
     output(instruction)
   end
 
+  def menu_error
+    output('Invalid selection! Please choose from the numbers listed above.')
+  end
+
   def board(board)
     current_board = board_template(board.spaces)
     output(current_board)
@@ -16,6 +20,11 @@ class Console
 
   def player_menu
     output(player_types)
+  end
+
+  def order_menu(unordered_players)
+    menu = order_types(unordered_players)
+    output(menu)
   end
 
   private
@@ -29,18 +38,23 @@ class Console
       "If there are no free spaces and no player has won, the game will end in a draw.\n\n" \
   end
 
-  def player_types
-    "Who would you like to play against?\n" \
-      "Select a number:\n" \
-      "1 - Player vs. Player\n" \
-      "2 - Computer vs. Player\n"
-  end
-
   def board_template(board)
     "\n #{board[0]} | #{board[1]} | #{board[2]}\n" \
       "---|---|---\n" \
       " #{board[3]} | #{board[4]} | #{board[5]}\n" \
       "---|---|---\n" \
       " #{board[6]} | #{board[7]} | #{board[8]}\n\n"
+  end
+
+  def player_types
+    "\nWho would you like to play against?\n" \
+      "1 - Another player\n" \
+      "2 - Computer\n"
+  end
+
+  def order_types(unordered_players)
+    "\nWho should take the first turn?\n" \
+      "1 - #{unordered_players[0].name}\n" \
+      "2 - #{unordered_players[1].name}\n"
   end
 end

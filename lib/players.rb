@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 class Players
-  def initialize(player1, player2)
-    @current_player = player1
-    @next_player = player2
+  attr_reader :first_player, :second_player
+
+  def initialize(players)
+    @first_player = players[0]
+    @second_player = players[1]
   end
 
   def initial_order
-    [@current_player, @next_player]
+    [@first_player, @second_player]
   end
 end
