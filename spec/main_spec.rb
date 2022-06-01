@@ -9,7 +9,7 @@ describe Main do
       @main = Main.new
       $stdout = StringIO.new
 
-      allow($stdin).to receive(:gets).and_return('1', '2', '1', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+      allow($stdin).to receive(:gets).and_return('1', '$', '%', '1', '1', '1', '2', '3', '4', '5', '6', '7', '8', '9')
 
       @main.run
       @output = $stdout.string.split("\n")
@@ -23,11 +23,35 @@ describe Main do
       expect(@output).to include('Who should take the first turn?')
     end
 
-    it 'prints Tic Tac Toe instructions' do
+    it 'prints Tic Tac Toe greeting' do
       expect(@output).to include('Welcome to TIC TAC TOE')
     end
 
-    it "initializes as player 1's turn by default" do
+    it 'prompts the user to select opponent' do
+      expect(@output).to include('Who would you like to play against?')
+    end
+
+    it 'prompts the user to select a marker for the first player' do
+      expect(@output).to include('Select a marker for Player 1:')
+    end
+
+    it 'prompts the user to select a marker for the second player' do
+      expect(@output).to include('Select a marker for Player 2:')
+    end
+
+    it 'prompts the user to select the order of players' do
+      expect(@output).to include('Who should take the first turn?')
+    end
+
+    it 'displays the correct choices for the order menu' do
+      expect(@output).to include('1 - Player 1', '2 - Player 2')
+    end
+
+    it 'prompts the user to select the size of the board' do
+      expect(@output).to include('What size board would you like?')
+    end
+
+    it 'loops the game until the game is finished' do
       over_message = @output.find { |string| string.include?('Game over!') }
       expect(over_message).to include('Game over!')
     end

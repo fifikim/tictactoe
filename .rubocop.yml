@@ -10,6 +10,7 @@ Metrics/MethodLength:
 Metrics/BlockLength:
   Max: 30
   Exclude:
+    - ./spec/main_spec.rb
     - ./spec/board_spec.rb
     - ./spec/game_spec.rb
     - ./spec/players_spec.rb
@@ -24,6 +25,8 @@ Metrics/BlockLength:
     - ./spec/order_selector_spec.rb
     - ./spec/config_selector_spec.rb
     - ./spec/board_selector_spec.rb
+    - ./spec/marker_selector_spec.rb
+    - ./spec/config_selector_spec.rb
     - ./spec/game_console_spec.rb
     - ./spec/main_console_spec.rb
 Layout/LineLength:

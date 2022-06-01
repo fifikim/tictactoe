@@ -4,6 +4,7 @@ require_relative 'game_builder'
 require_relative 'player_selector'
 require_relative 'order_selector'
 require_relative 'board_selector'
+require_relative 'marker_selector'
 require_relative 'input'
 
 class ConfigSelector
@@ -15,7 +16,9 @@ class ConfigSelector
     @console.player_menu
     unordered_players = choose_players
 
-    @console.order_menu(unordered_players)
+    players_with_markers = choose_markers(unordered_players)
+
+    @console.order_menu(players_with_markers)
     ordered_players = choose_order(unordered_players)
 
     @console.board_menu
@@ -59,6 +62,32 @@ class ConfigSelector
     else
       @console.menu_error
       choose_board
+    end
+  end
+
+  def choose_markers(unordered_players)
+    markers = []
+
+    @console.marker_prompt(unordered_players[0])
+    markers << choose_marker(markers)
+
+    @console.marker_prompt(unordered_players[1])
+    markers << choose_marker(markers)
+
+    MarkerSelector.record(unordered_players, markers)
+  end
+
+  def choose_marker(selected_markers)
+    marker_choice = Input.choose
+
+    if MarkerSelector.wrong_length(marker_choice)
+      @console.output('Markers must be one single character. Please try again:')
+      choose_marker(selected_markers)
+    elsif MarkerSelector.duplicate(selected_markers, marker_choice)
+      @console.output('Marker has already been selected. Please try again:')
+      choose_marker(selected_markers)
+    else
+      marker_choice
     end
   end
 end

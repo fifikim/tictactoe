@@ -4,8 +4,8 @@ require_relative 'human_player'
 require_relative 'easy_ai_player'
 
 $PLAYER_OPTIONS = [
-  ['Another player', [HumanPlayer.new('Player 1', 'X'), HumanPlayer.new('Player 2', 'O')]],
-  ['Computer', [EasyAiPlayer.new('Player 1 (Computer)', 'X'), HumanPlayer.new('Player 2', 'O')]]
+  ['Another player', [HumanPlayer.new('Player 1'), HumanPlayer.new('Player 2')]],
+  ['Computer', [EasyAiPlayer.new('Player 1 (Computer)'), HumanPlayer.new('Player 2')]]
 ]
 
 class PlayerSelector

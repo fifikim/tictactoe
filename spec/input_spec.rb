@@ -3,10 +3,10 @@
 require 'input'
 
 describe Input do
-  describe '.choose_space' do
+  describe '.choose' do
     it 'returns input received from $stdin as a string' do
       allow($stdin).to receive(:gets).and_return('8')
-      input = Input.choose_space
+      input = Input.choose
 
       expect(input).to eq('8')
     end

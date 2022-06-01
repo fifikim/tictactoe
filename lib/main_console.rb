@@ -26,6 +26,10 @@ class MainConsole < Console
     output(board_types)
   end
 
+  def marker_prompt(player)
+    output("\nSelect a marker for #{player.name}:")
+  end
+
   private
 
   def welcome_msg
@@ -46,7 +50,7 @@ class MainConsole < Console
 
   def board_types
     "\nWhat size board would you like?\n" \
-      "#{list_options($BOARD_OPTIONS)}"
+      "#{list_options($BOARD_OPTIONS)}\n"
   end
 
   def order_types(unordered_players)
