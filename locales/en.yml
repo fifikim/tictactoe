@@ -1,0 +1,4 @@
+en:
+  welcome:  "Welcome to TIC TAC TOE\n\nSelect game options:\n"
+  menu_error: "Invalid selection! Please choose from the numbers listed above."
+  marker_prompt: "Select a marker for Player 1"
