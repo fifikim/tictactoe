@@ -41,12 +41,12 @@ class MainConsole < Console
 
   def player_types
     "\nWho would you like to play against?\n" \
-      "#{list_options($PLAYER_OPTIONS)}"
+      "#{list_options(PlayerSelector::PLAYER_OPTIONS)}"
   end
 
   def board_types
     "\nWhat size board would you like?\n" \
-      "#{list_options($BOARD_OPTIONS)}"
+      "#{list_options(BoardSelector::BOARD_OPTIONS)}"
   end
 
   def order_types(unordered_players)
