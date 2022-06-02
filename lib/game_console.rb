@@ -57,7 +57,7 @@ class GameConsole < Console
 
   def horizontal_line
     spacer_line = []
-    @line_length.times { |_i| spacer_line << '----' }
+    @line_length.times { spacer_line << '----' }
     spacer_line.join('|').concat("\n")
   end
 end

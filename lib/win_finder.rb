@@ -22,29 +22,22 @@ class WinFinder
   end
 
   def columns
-    rows[0].map do |n|
-      column = []
-      while n <= @board_size
-        column << n.to_i
-        n += @line_length
-      end
-      column
-    end
+    rows.transpose
   end
 
   def diagonals
-    n = 1
     first_diagonal = []
-    while n <= @board_size
-      first_diagonal << n.to_i
-      n += @line_length + 1
+    space = 1
+    while space <= @board_size
+      first_diagonal << space.to_i
+      space += @line_length + 1
     end
 
-    n = @line_length
     second_diagonal = []
-    while n < @board_size
-      second_diagonal << n.to_i
-      n += @line_length - 1
+    space = @line_length
+    while space < @board_size
+      second_diagonal << space.to_i
+      space += @line_length - 1
     end
 
     [first_diagonal, second_diagonal]

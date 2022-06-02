@@ -4,7 +4,6 @@ require_relative 'game'
 require_relative 'board'
 require_relative 'game_console'
 require_relative 'win_finder'
-require_relative 'input_validator'
 
 class GameBuilder
   attr_reader :game
@@ -22,8 +21,8 @@ class GameBuilder
   def board(board_size)
     spaces = (1..board_size).to_a
     @game.board = Board.new(spaces)
+    @game.board_size = board_size
     @game.win_finder = WinFinder.new(board_size)
-    @game.input_validator = InputValidator.new(board_size)
     @game.console = GameConsole.new(board_size)
   end
 

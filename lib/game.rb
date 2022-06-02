@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+require 'input_validator'
+
 class Game
-  attr_accessor :board, :current_player, :next_player, :markers, :input_validator, :win_finder, :console, :game_over
+  attr_accessor :board, :board_size, :current_player, :next_player, :markers, :win_finder, :console, :game_over
 
   def play
     take_turn until @game_over
@@ -23,7 +25,7 @@ class Game
   def select_space
     input = @current_player.select(@board, @markers)
 
-    if @input_validator.invalid_selection? input
+    if InputValidator.invalid_selection?(@board_size, input)
       @console.invalid_message
       select_space
     elsif @board.occupied_space?(input, @markers)

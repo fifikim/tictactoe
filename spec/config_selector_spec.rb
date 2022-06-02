@@ -3,6 +3,7 @@
 require 'main_console'
 require 'config_selector'
 require 'stringio'
+require 'board_mocker'
 
 describe ConfigSelector do
   describe '.select_options' do
@@ -45,14 +46,14 @@ describe ConfigSelector do
     end
 
     it 'configures the WinFinder with the correct board' do
-      board = %w[1 2 3 X 5 6 X 8 9 X 11 12 X 14 15 16]
+      board = BoardMocker.fill(16, { X: [4, 7, 10, 13] })
       game_won = @game.win_finder.game_won?(board, 'X')
 
       expect(game_won).to be true
     end
 
-    it 'configures the InputValidator with the correct board' do
-      invalid_input = @game.input_validator.invalid_selection?(17)
+    it 'configures the InputValidator to take in the correct board size' do
+      invalid_input = InputValidator.invalid_selection?(@game.board_size, 17)
 
       expect(invalid_input).to be true
     end

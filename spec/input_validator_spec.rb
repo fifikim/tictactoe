@@ -3,8 +3,6 @@
 require 'input_validator'
 require 'board'
 
-# TODO: test for all board sizes
-
 describe InputValidator do
   describe '.invalid_selection?' do
     before do
@@ -20,15 +18,13 @@ describe InputValidator do
         nil: 'nil'
       }.each do |invalid_input, type|
         it "returns true when input is #{type}" do
-          validator = InputValidator.new(9)
-          validate = validator.invalid_selection?(invalid_input.to_s)
+          validate = InputValidator.invalid_selection?(9, invalid_input.to_s)
           expect(validate).to be true
         end
       end
 
       it 'returns false if the selection is valid' do
-        validator = InputValidator.new(9)
-        validate = validator.invalid_selection?('8')
+        validate = InputValidator.invalid_selection?(9, '8')
         expect(validate).to be false
       end
     end
@@ -42,15 +38,13 @@ describe InputValidator do
         nil: 'nil'
       }.each do |invalid_input, type|
         it "returns true when input is #{type}" do
-          validator = InputValidator.new(16)
-          validate = validator.invalid_selection?(invalid_input.to_s)
+          validate = InputValidator.invalid_selection?(15, invalid_input.to_s)
           expect(validate).to be true
         end
       end
 
       it 'returns false if the selection is valid' do
-        validator = InputValidator.new(16)
-        validate = validator.invalid_selection?('15')
+        validate = InputValidator.invalid_selection?(15, '14')
         expect(validate).to be false
       end
     end
@@ -64,15 +58,13 @@ describe InputValidator do
         nil: 'nil'
       }.each do |invalid_input, type|
         it "returns true when input is #{type}" do
-          validator = InputValidator.new(25)
-          validate = validator.invalid_selection?(invalid_input.to_s)
+          validate = InputValidator.invalid_selection?(25, invalid_input.to_s)
           expect(validate).to be true
         end
       end
 
       it 'returns false if the selection is valid' do
-        validator = InputValidator.new(25)
-        validate = validator.invalid_selection?('22')
+        validate = InputValidator.invalid_selection?(25, '22')
         expect(validate).to be false
       end
     end
