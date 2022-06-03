@@ -52,4 +52,14 @@ describe MainConsole do
       expect(output).to include('What size board would you like?')
     end
   end
+
+  describe '.marker_prompt' do
+    it 'should prompt the user to select a marker for a given player' do
+      player = HumanPlayer.new('Test Player 1')
+      @console.marker_prompt(player)
+      output = $stdout.string.split("\n")
+
+      expect(output).to include('Select a marker for Test Player 1:')
+    end
+  end
 end

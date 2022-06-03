@@ -10,7 +10,7 @@ describe ConfigSelector do
     before do
       @console = MainConsole.new
       $stdout = StringIO.new
-      allow($stdin).to receive(:gets).and_return('2', '1', '2')
+      allow($stdin).to receive(:gets).and_return('2', '$', '%', '1', '2')
       selector = ConfigSelector.new(@console)
       @game = selector.select_options
       @output = $stdout.string.split("\n")
@@ -35,6 +35,15 @@ describe ConfigSelector do
     it 'builds a game with the selected players' do
       players = [@game.current_player.name, @game.next_player.name]
       expect(players).to eq(['Player 1 (Computer)', 'Player 2'])
+    end
+
+    it 'builds a game with the selected markers' do
+      markers = @game.markers
+      expect(markers).to eq(['$', '%'])
+    end
+
+    it 'assigns the first marker to the correct player' do
+      expect(@game.current_player.marker).to eq('$')
     end
 
     it 'assigns the first turn to the correct player' do
