@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'board'
-require 'board_mocker'
+require 'spec_helpers/board_mocker'
 
 describe Board do
   context 'when starting a new game' do

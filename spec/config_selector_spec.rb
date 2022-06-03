@@ -3,7 +3,7 @@
 require 'main_console'
 require 'config_selector'
 require 'stringio'
-require 'board_mocker'
+require 'spec_helpers/board_mocker'
 
 describe ConfigSelector do
   describe '.select_options' do

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'win_finder'
-require 'board_mocker'
+require 'spec_helpers/board_mocker'
 
 describe WinFinder do
   context 'when checking a 3x3 board' do
