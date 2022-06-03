@@ -5,6 +5,10 @@ class MarkerSelector
     selection.length.zero? || selection.length > 1
   end
 
+  def self.number(selection)
+    selection.to_i.to_s == selection
+  end
+
   def self.duplicate(markers, selection)
     markers.include? selection
   end

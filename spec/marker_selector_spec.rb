@@ -28,6 +28,26 @@ describe MarkerSelector do
     end
   end
 
+  describe '.number' do
+    it 'returns false when the marker is not a number' do
+      allow($stdin).to receive(:gets).and_return('%')
+
+      selection = Input.choose
+      number = MarkerSelector.number(selection)
+
+      expect(number).to be false
+    end
+
+    it 'returns true when the marker is a number' do
+      allow($stdin).to receive(:gets).and_return('4')
+
+      selection = Input.choose
+      number = MarkerSelector.number(selection)
+
+      expect(number).to be true
+    end
+  end
+
   describe '.duplicate' do
     it 'returns false when the first marker is selected' do
       markers = []
