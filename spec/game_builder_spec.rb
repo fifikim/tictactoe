@@ -3,18 +3,17 @@
 require 'game_builder'
 require 'human_player'
 require 'players'
-require 'console'
+require 'game_console'
 
 describe GameBuilder do
   before do
     @player1 = HumanPlayer.new('Test Player 1', 'X')
     @player2 = HumanPlayer.new('Test Player 2', 'O')
     @players = Players.new([@player1, @player2])
-    @console = Console.new
+    @board_size = 9
     @game = GameBuilder.build do |builder|
-      builder.board
+      builder.board(@board_size)
       builder.players(@players)
-      builder.console(@console)
     end
   end
 

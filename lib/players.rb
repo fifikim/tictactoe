@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Players
-  attr_reader :first_player, :second_player
-
   def initialize(players)
     @first_player = players[0]
     @second_player = players[1]

@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require_relative 'console'
+require_relative 'main_console'
 require_relative 'config_selector'
 
 class Main
-  def initialize(console = Console.new)
+  def initialize(console = MainConsole.new)
     @console = console
   end
 
   def run
-    @console.instructions
+    @console.welcome
 
     configs = ConfigSelector.new(@console)
     game = configs.select_options

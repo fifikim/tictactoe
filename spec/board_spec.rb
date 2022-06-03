@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'board'
+require 'spec_helpers/board_mocker'
 
 describe Board do
   context 'when starting a new game' do
@@ -28,13 +29,17 @@ describe Board do
 
   describe '.full?' do
     it 'returns true if there are no more free spaces on the board' do
-      board = Board.new(%w[X X O O O X X O X])
+      spaces = BoardMocker.fill(9, { X: [1, 2, 6, 7, 9], O: [3, 4, 5, 8] })
+      board = Board.new(spaces)
+
       full_board = board.full?(%w[X O])
       expect(full_board).to be true
     end
 
     it 'returns false if there are free spaces on the board' do
-      board = Board.new(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 9])
+      spaces = BoardMocker.fill(9, { X: [1, 2, 6, 7], O: [3, 4, 5, 8] })
+      board = Board.new(spaces)
+
       full_board = board.full?(%w[X O])
       expect(full_board).to be false
     end
