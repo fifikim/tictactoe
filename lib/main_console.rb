@@ -26,6 +26,10 @@ class MainConsole < Console
     output(board_types)
   end
 
+  def marker_prompt(player)
+    output("\nSelect a marker for #{player.name}:")
+  end
+
   private
 
   def welcome_msg
