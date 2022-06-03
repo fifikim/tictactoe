@@ -4,8 +4,8 @@ require_relative 'players'
 
 class OrderSelector
   ORDER_OPTIONS = {
-    '1' => proc { |players| [players[0], players[1]] },
-    '2' => proc { |players| [players[1], players[0]] }
+    0 => proc { |players| [players[0], players[1]] },
+    1 => proc { |players| [players[1], players[0]] }
   }.freeze
 
   def self.validate(selection)

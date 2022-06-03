@@ -5,7 +5,7 @@ require_relative 'input'
 
 class HumanPlayer < Player
   def select(*)
-    Input.get
+    Input.choose_space
   end
 
   def turn_message

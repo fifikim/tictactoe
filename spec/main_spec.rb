@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'main'
-require 'config_selector'
 require 'stringio'
 
 describe Main do
@@ -10,18 +9,22 @@ describe Main do
       @main = Main.new
       $stdout = StringIO.new
 
-      allow($stdin).to receive(:gets).and_return('1', '1', '1', '2', '3', '4', '5', '6', '7')
+      allow($stdin).to receive(:gets).and_return('1', '2', '1', '1', '2', '3', '4', '5', '6', '7', '8', '9')
 
       @main.run
       @output = $stdout.string.split("\n")
     end
 
-    it 'prints the select_players menu' do
+    it 'prints the Players menu' do
       expect(@output).to include('Who would you like to play against?')
     end
 
+    it 'prints the Order menu' do
+      expect(@output).to include('Who should take the first turn?')
+    end
+
     it 'prints Tic Tac Toe instructions' do
-      expect(@output).to include('TIC TAC TOE')
+      expect(@output).to include('Welcome to TIC TAC TOE')
     end
 
     it "initializes as player 1's turn by default" do
