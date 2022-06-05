@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'game_builder'
+require_relative 'language_selector'
 require_relative 'player_selector'
 require_relative 'marker_selector'
 require_relative 'order_selector'

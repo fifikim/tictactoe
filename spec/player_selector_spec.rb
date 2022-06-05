@@ -5,15 +5,6 @@ require 'input'
 require 'stringio'
 
 describe PlayerSelector do
-  describe '.select' do
-    it 'takes in a user selection and converts it to an index' do
-      allow($stdin).to receive(:gets).and_return('1')
-      selection = Input.choose_option
-
-      expect(selection).to eq(0)
-    end
-  end
-
   describe '.validate' do
     it 'returns true when a valid selection is entered' do
       selection_valid = PlayerSelector.validate(1)

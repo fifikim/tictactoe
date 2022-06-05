@@ -4,15 +4,6 @@ require 'board_selector'
 require 'input'
 
 describe BoardSelector do
-  describe '.select' do
-    it 'takes in a user input' do
-      allow($stdin).to receive(:gets).and_return('1')
-      selection = Input.choose_option
-
-      expect(selection).to eq(0)
-    end
-  end
-
   describe '.validate' do
     it 'returns true when a valid selection is entered' do
       selection_valid = BoardSelector.validate(0)
