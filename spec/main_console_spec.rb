@@ -23,7 +23,7 @@ describe MainConsole do
     end
 
     describe '.welcome' do
-      it 'should display the welcome message' do
+      it 'should display the Welcome message' do
         @console.welcome
         output = $stdout.string.split("\n")
 
@@ -32,7 +32,7 @@ describe MainConsole do
     end
 
     describe '.menu_error' do
-      it 'should display the menu error message' do
+      it 'should display the Menu error message' do
         @console.menu_error
         output = $stdout.string.split("\n")
 
@@ -64,7 +64,7 @@ describe MainConsole do
     end
 
     describe '.language_menu' do
-      it 'should display the language menu' do
+      it 'should display the Language menu' do
         @console.language_menu
         output = $stdout.string.split("\n")
         expect(output).to include('Please select your language:')
@@ -77,7 +77,7 @@ describe MainConsole do
         @output = $stdout.string.split("\n")
       end
 
-      it 'should display the player menu' do
+      it 'should display the Player menu' do
         expect(@output).to include('Who would you like to play against?')
       end
 
@@ -93,7 +93,7 @@ describe MainConsole do
       @console.order_menu(unordered_players)
       output = $stdout.string.split("\n")
 
-      it 'should display the player order menu' do
+      it 'should display the player Order menu' do
         expect(output).to include('Who should take the first turn?')
       end
 
@@ -107,7 +107,7 @@ describe MainConsole do
     end
 
     describe '.board_menu' do
-      it 'should display the board menu' do
+      it 'should display the Board menu' do
         @console.board_menu
         output = $stdout.string.split("\n")
         expect(output).to include('What size board would you like?')
@@ -125,10 +125,18 @@ describe MainConsole do
     end
 
     describe '.new_game' do
-      it 'should display the new game message' do
+      it 'should display the New Game message' do
         @console.new_game
         output = $stdout.string.split("\n")
         expect(output).to include('Starting new game...')
+      end
+    end
+
+    describe '.goodbye' do
+      it 'should display the Goodbye message' do
+        @console.goodbye
+        output = $stdout.string.split("\n")
+        expect(output).to include('Thanks for playing! Goodbye.')
       end
     end
   end
@@ -146,7 +154,7 @@ describe MainConsole do
     end
 
     describe '.welcome' do
-      it 'should translate the welcome message' do
+      it 'should translate the Welcome message' do
         @console.welcome
         output = $stdout.string.split("\n")
 
@@ -155,7 +163,7 @@ describe MainConsole do
     end
 
     describe '.menu_error' do
-      it 'should translate the menu error message' do
+      it 'should translate the Menu error message' do
         @console.menu_error
         output = $stdout.string.split("\n")
 
@@ -187,7 +195,7 @@ describe MainConsole do
     end
 
     describe '.language_menu' do
-      it 'should translate the language menu' do
+      it 'should translate the Language menu' do
         @console.language_menu
         output = $stdout.string.split("\n")
         expect(output).to include('Seleccione su idioma:')
@@ -200,7 +208,7 @@ describe MainConsole do
         @output = $stdout.string.split("\n")
       end
 
-      it 'should display the player menu' do
+      it 'should display the Player menu' do
         expect(@output).to include('¿Contra quién te gustaría jugar?')
       end
 
@@ -217,7 +225,7 @@ describe MainConsole do
       @console.order_menu(unordered_players)
       output = $stdout.string.split("\n")
 
-      it 'should translate the player order menu' do
+      it 'should translate the player Order menu' do
         expect(output).to include('¿Quién debe tomar el primer turno?')
       end
 
@@ -231,7 +239,7 @@ describe MainConsole do
     end
 
     describe '.board_menu' do
-      it 'should translate the board menu' do
+      it 'should translate the Board menu' do
         @console.board_menu
         output = $stdout.string.split("\n")
         expect(output).to include('¿Qué tamaño de tabla te gustaría?')
@@ -249,10 +257,18 @@ describe MainConsole do
     end
 
     describe '.new_game' do
-      it 'should display the new game message' do
+      it 'should display the New Game message' do
         @console.new_game
         output = $stdout.string.split("\n")
         expect(output).to include('Comenzando nuevo juego...')
+      end
+    end
+
+    describe '.goodbye' do
+      it 'should display the Goodbye message' do
+        @console.goodbye
+        output = $stdout.string.split("\n")
+        expect(output).to include('¡Gracias por jugar! Adiós.')
       end
     end
   end
@@ -270,7 +286,7 @@ describe MainConsole do
     end
 
     describe '.welcome' do
-      it 'should translate the welcome message' do
+      it 'should translate the Welcome message' do
         @console.welcome
         output = $stdout.string.split("\n")
 
@@ -279,7 +295,7 @@ describe MainConsole do
     end
 
     describe '.menu_error' do
-      it 'should translate the menu error message' do
+      it 'should translate the Menu error message' do
         @console.menu_error
         output = $stdout.string.split("\n")
 
@@ -311,7 +327,7 @@ describe MainConsole do
     end
 
     describe '.language_menu' do
-      it 'should translate the language menu' do
+      it 'should translate the Language menu' do
         @console.language_menu
         output = $stdout.string.split("\n")
         expect(output).to include('언어를 선택하세요:')
@@ -324,7 +340,7 @@ describe MainConsole do
         @output = $stdout.string.split("\n")
       end
 
-      it 'should display the player menu' do
+      it 'should display the Player menu' do
         expect(@output).to include('누구와 경기하고 싶습니까?')
       end
 
@@ -341,7 +357,7 @@ describe MainConsole do
       @console.order_menu(unordered_players)
       output = $stdout.string.split("\n")
 
-      it 'should translate the player order menu' do
+      it 'should translate the player Order menu' do
         expect(output).to include('누가 먼저 턴을 해야 할까요?')
       end
 
@@ -355,7 +371,7 @@ describe MainConsole do
     end
 
     describe '.board_menu' do
-      it 'should translate the board menu' do
+      it 'should translate the Board menu' do
         @console.board_menu
         output = $stdout.string.split("\n")
         expect(output).to include('어떤 크기의 보드를 원하십니까?')
@@ -373,10 +389,18 @@ describe MainConsole do
     end
 
     describe '.new_game' do
-      it 'should display the new game message' do
+      it 'should display the New Game message' do
         @console.new_game
         output = $stdout.string.split("\n")
         expect(output).to include('새 게임 시작 중...')
+      end
+    end
+
+    describe '.goodbye' do
+      it 'should display the Goodbye message' do
+        @console.goodbye
+        output = $stdout.string.split("\n")
+        expect(output).to include('놀아줘서 고마워! 안녕.')
       end
     end
   end

@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 require 'main'
+require 'translator'
 require 'stringio'
 
 describe Main do
   describe '.run' do
     before do
+      Translator.new.switch_locale(:en)
       @main = Main.new
       $stdout = StringIO.new
 

@@ -4,10 +4,12 @@ require 'main_console'
 require 'config_selector'
 require 'stringio'
 require 'spec_helpers/board_mocker'
+require 'translator'
 
 describe ConfigSelector do
   describe '.select_options' do
     before do
+      Translator.new.switch_locale(:en)
       @console = MainConsole.new
       $stdout = StringIO.new
       allow($stdin).to receive(:gets).and_return('1', '2', '$', '%', '1', '2')

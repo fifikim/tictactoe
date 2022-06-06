@@ -62,6 +62,11 @@ class MainConsole < Console
     output(msg)
   end
 
+  def goodbye
+    msg = translate(:goodbye)
+    output(msg)
+  end
+
   private
 
   def list_options(option_type)

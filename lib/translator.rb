@@ -3,11 +3,10 @@
 require 'i18n'
 
 class Translator
-  def initialize(locale = :en)
+  def initialize
     @translator = I18n
 
     @translator.load_path << Dir["#{File.expand_path('locales')}/*.yml"]
-    @translator.locale = locale
   end
 
   def locale

@@ -17,6 +17,6 @@ class Main
     @console.new_game
     game.play
 
-    @console.output('Thanks for playing! Goodbye.')
+    @console.goodbye
   end
 end
