@@ -3,34 +3,55 @@
 require_relative 'console'
 
 class GameConsole < Console
-  def initialize(board_size)
+  def initialize(board_size = 9)
     super
     @board_size = board_size
     @line_length = Math.sqrt(board_size).to_i
   end
 
-  def instructions
-    output(instruction)
+  # rubocop:disable Layout/LineLength
+  def instructions(player1, player2)
+    player_name1 = translate(player1.name)
+    player_name2 = translate(player2.name)
+    instructions_msg = translate('instructions', board_size: @board_size, line_length: @line_length,
+                                                 name1: player_name1, marker1: player1.marker, name2: player_name2, marker2: player2.marker)
+    output(instructions_msg)
   end
-
-  def invalid_message
-    output("Invalid character! Please select an integer from 1-#{@board_size}:")
-  end
+  # rubocop:enable Layout/LineLength
 
   def board(current_board)
     board_output = fill_template(current_board.spaces)
     output(board_output)
   end
 
-  private
-
-  def instruction
-    "Instructions:\n" \
-      "Enter the number (1-#{@board_size}) of the space on the board where you want to move.\n" \
-      "Player 1 moves first and marks their spaces with an \"X\". Player 2 marks with an \"O\".\n" \
-      "To win, claim 3 adjacent spaces in a horizontal, vertical, or diagonal line.\n" \
-      "If there are no free spaces and no player has won, the game will end in a draw.\n\n" \
+  def invalid
+    msg = translate('error.character', board_size: @board_size)
+    output(msg)
   end
+
+  def turn(turn_message, player)
+    player_name = translate(player)
+    turn_msg = translate(turn_message, player: player_name)
+    output(turn_msg)
+  end
+
+  def occupied
+    msg = translate('error.occupied')
+    output(msg)
+  end
+
+  def win(player)
+    player_name = translate(player)
+    win_msg = translate('won', winner: player_name)
+    output(win_msg)
+  end
+
+  def draw
+    draw_msg = translate('draw')
+    output(draw_msg)
+  end
+
+  private
 
   def fill_template(array)
     rows = split_rows(array)

@@ -1,61 +1,94 @@
 # frozen_string_literal: true
 
 require_relative 'console'
+require_relative 'translator'
+require_relative 'language_selector'
 require_relative 'board_selector'
 require_relative 'player_selector'
 
 class MainConsole < Console
   def welcome
+    welcome_msg = translate(:welcome)
     output(welcome_msg)
   end
 
+  def marker_prompt(player)
+    player_name = translate(player.name)
+    marker_prompt = translate('prompt.marker', player: player_name)
+    output(marker_prompt)
+  end
+
   def menu_error
-    output('Invalid selection! Please choose from the numbers listed above.')
+    error_msg = translate('error.menu')
+    output(error_msg)
+  end
+
+  def marker_error(type)
+    error_msg = translate("error.marker.#{type}")
+    output(error_msg)
+  end
+
+  def language_menu
+    language_prompt = translate('prompt.language')
+    output(language_prompt)
+
+    output(language_types)
   end
 
   def player_menu
+    player_prompt = translate('prompt.player')
+    output(player_prompt)
+
     output(player_types)
   end
 
   def order_menu(unordered_players)
+    order_prompt = translate('prompt.order')
+    output(order_prompt)
+
     menu = order_types(unordered_players)
     output(menu)
   end
 
   def board_menu
+    board_prompt = translate('prompt.board')
+    output(board_prompt)
+
     output(board_types)
   end
 
-  def marker_prompt(player)
-    output("\nSelect a marker for #{player.name}:")
+  def new_game
+    msg = translate(:new_game)
+    output(msg)
+  end
+
+  def goodbye
+    msg = translate(:goodbye)
+    output(msg)
   end
 
   private
 
-  def welcome_msg
-    "Welcome to TIC TAC TOE\n\n" \
-      "Select game options:\n"
-  end
-
   def list_options(option_type)
     option_type.map.with_index do |(key, _value), index|
-      "#{index + 1} - #{key}\n"
+      "#{index + 1} - #{translate(key)}\n"
     end.join
   end
 
+  def language_types
+    list_options(LanguageSelector::LANGUAGE_OPTIONS).to_s
+  end
+
   def player_types
-    "\nWho would you like to play against?\n" \
-      "#{list_options(PlayerSelector::PLAYER_OPTIONS)}"
+    list_options(PlayerSelector::PLAYER_OPTIONS).to_s
   end
 
   def board_types
-    "\nWhat size board would you like?\n" \
-      "#{list_options(BoardSelector::BOARD_OPTIONS)}"
+    list_options(BoardSelector::BOARD_OPTIONS).to_s
   end
 
   def order_types(unordered_players)
-    "\nWho should take the first turn?\n" \
-      "1 - #{unordered_players[0].name}\n" \
-      "2 - #{unordered_players[1].name}\n"
+    "1 - #{translate(unordered_players[0].name)}\n" \
+      "2 - #{translate(unordered_players[1].name)}\n"
   end
 end

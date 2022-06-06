@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'board_selector'
-require 'input'
+require 'language_selector'
+require 'i18n'
 
-describe BoardSelector do
+describe LanguageSelector do
   describe '.validate' do
     it 'returns true when a valid selection is entered' do
-      selection_valid = BoardSelector.validate(0)
+      selection_valid = LanguageSelector.validate(1)
 
       expect(selection_valid).to be true
     end
@@ -19,7 +19,7 @@ describe BoardSelector do
       nil => 'nil'
     }.each do |invalid_input, type|
       it "returns false when input is #{type}" do
-        validate = BoardSelector.validate(invalid_input)
+        validate = LanguageSelector.validate(invalid_input)
         expect(validate).to be false
       end
     end
@@ -27,29 +27,29 @@ describe BoardSelector do
 
   describe '.record' do
     context "when '1' (index 0) is selected" do
-      it 'returns 9 representing the size of a 3x3 board' do
+      it 'returns the locale symbol for English (:en)' do
         selection = 0
-        board_size = BoardSelector.record(selection)
+        locale = LanguageSelector.record(selection)
 
-        expect(board_size).to eq(9)
+        expect(locale).to eq(:en)
       end
     end
 
     context "when '2' (index 1) is selected" do
-      it 'returns 16 representing the size of a 4x4 board' do
+      it 'returns the locale symbol for Spanish (:es)' do
         selection = 1
-        board_size = BoardSelector.record(selection)
+        locale = LanguageSelector.record(selection)
 
-        expect(board_size).to eq(16)
+        expect(locale).to eq(:es)
       end
     end
 
     context "when '3' (index 2) is selected" do
-      it 'returns 25 representing the size of a 5x5 board' do
+      it 'returns the locale symbol for Korean (:ko)' do
         selection = 2
-        board_size = BoardSelector.record(selection)
+        locale = LanguageSelector.record(selection)
 
-        expect(board_size).to eq(25)
+        expect(locale).to eq(:ko)
       end
     end
   end

@@ -8,3 +8,5 @@ gem 'rubocop'
 group :development do
   gem 'guard-rspec'
 end
+
+gem 'i18n'

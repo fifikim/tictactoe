@@ -1,4 +1,5 @@
 AllCops:
+  TargetRubyVersion: 3.1
   NewCops: enable
   Exclude:
     - Guardfile
@@ -21,6 +22,7 @@ Metrics/BlockLength:
     - ./spec/game_builder_spec.rb
     - ./spec/player_builder_spec.rb
     - ./spec/easy_ai_player_spec.rb
+    - ./spec/language_selector_spec.rb
     - ./spec/player_selector_spec.rb
     - ./spec/marker_selector_spec.rb
     - ./spec/order_selector_spec.rb
@@ -29,6 +31,7 @@ Metrics/BlockLength:
     - ./spec/game_console_spec.rb
     - ./spec/main_console_spec.rb
     - ./spec/board_mocker_spec.rb
+    - ./spec/translator_spec.rb
 Layout/LineLength:
   Exclude: 
     - ./spec/console_spec.rb

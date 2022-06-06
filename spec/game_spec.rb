@@ -5,11 +5,13 @@ require 'human_player'
 require 'players'
 require 'game_builder'
 require 'stringio'
+require 'translator'
 
 describe Game do
   before do
+    Translator.new.switch_locale(:en)
     @board_size = 9
-    @players = Players.new([HumanPlayer.new('Player 1', 'X'), HumanPlayer.new('Player 2', 'O')])
+    @players = Players.new([HumanPlayer.new('player.human1', 'X'), HumanPlayer.new('player.human2', 'O')])
     $stdout = StringIO.new
   end
 

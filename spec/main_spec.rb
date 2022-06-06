@@ -1,18 +1,29 @@
 # frozen_string_literal: true
 
 require 'main'
+require 'translator'
 require 'stringio'
 
 describe Main do
   describe '.run' do
     before do
+      Translator.new.switch_locale(:en)
       @main = Main.new
       $stdout = StringIO.new
 
-      allow($stdin).to receive(:gets).and_return('1', '$', '%', '1', '1', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+      allow($stdin).to receive(:gets).and_return('1', '1', '$', '%', '1', '1', '1', '2', '3', '4', '5', '6', '7', '8',
+                                                 '9')
 
       @main.run
       @output = $stdout.string.split("\n")
+    end
+
+    it 'prints Tic Tac Toe greeting' do
+      expect(@output).to include('Welcome to TIC TAC TOE')
+    end
+
+    it 'prints the Language menu' do
+      expect(@output).to include('Please select your language:')
     end
 
     it 'prints the Players menu' do
@@ -21,10 +32,6 @@ describe Main do
 
     it 'prints the Order menu' do
       expect(@output).to include('Who should take the first turn?')
-    end
-
-    it 'prints Tic Tac Toe greeting' do
-      expect(@output).to include('Welcome to TIC TAC TOE')
     end
 
     it 'prompts the user to select opponent' do
@@ -49,6 +56,10 @@ describe Main do
 
     it 'prompts the user to select the size of the board' do
       expect(@output).to include('What size board would you like?')
+    end
+
+    it "displays 'Starting new game' message after user finishes selecting options" do
+      expect(@output).to include('Starting new game...')
     end
 
     it 'loops the game until the game is finished' do

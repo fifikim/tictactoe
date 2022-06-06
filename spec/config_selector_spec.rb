@@ -4,16 +4,26 @@ require 'main_console'
 require 'config_selector'
 require 'stringio'
 require 'spec_helpers/board_mocker'
+require 'translator'
 
 describe ConfigSelector do
   describe '.select_options' do
     before do
+      Translator.new.switch_locale(:en)
       @console = MainConsole.new
       $stdout = StringIO.new
-      allow($stdin).to receive(:gets).and_return('2', '$', '%', '1', '2')
+      allow($stdin).to receive(:gets).and_return('1', '2', '$', '%', '1', '2')
       selector = ConfigSelector.new(@console)
       @game = selector.select_options
       @output = $stdout.string.split("\n")
+    end
+
+    it 'prompts the user to select a language' do
+      expect(@output).to include('Please select your language:')
+    end
+
+    it 'sets the language based on user selection' do
+      expect(@output).to include('2 - Computer')
     end
 
     it 'prompts the user to select opponent' do
@@ -33,7 +43,9 @@ describe ConfigSelector do
     end
 
     it 'builds a game with the selected players' do
-      players = [@game.current_player.name, @game.next_player.name]
+      player1 = @console.translate(@game.current_player.name)
+      player2 = @console.translate(@game.next_player.name)
+      players = [player1, player2]
       expect(players).to eq(['Player 1 (Computer)', 'Player 2'])
     end
 
@@ -47,7 +59,8 @@ describe ConfigSelector do
     end
 
     it 'assigns the first turn to the correct player' do
-      expect(@game.current_player.name).to eq('Player 1 (Computer)')
+      player1 = @console.translate(@game.current_player.name)
+      expect(player1).to eq('Player 1 (Computer)')
     end
 
     it 'builds the correct size board' do
@@ -82,7 +95,7 @@ describe ConfigSelector do
       nil: 'nil'
     }.each do |invalid_input, type|
       it "displays an error message when selection is #{type}" do
-        allow($stdin).to receive(:gets).and_return(invalid_input.to_s, '2', '$', '%', '1', '2')
+        allow($stdin).to receive(:gets).and_return(invalid_input.to_s, '1', '2', '$', '%', '1', '2')
         ConfigSelector.new(@console).select_options
 
         output = $stdout.string.split("\n")

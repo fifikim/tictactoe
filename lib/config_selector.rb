@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'game_builder'
+require_relative 'language_selector'
 require_relative 'player_selector'
 require_relative 'marker_selector'
 require_relative 'order_selector'
@@ -13,6 +14,9 @@ class ConfigSelector
   end
 
   def select_options
+    @console.language_menu
+    choose_language
+
     @console.player_menu
     unordered_players = choose_players
 
@@ -31,6 +35,18 @@ class ConfigSelector
   end
 
   private
+
+  def choose_language
+    language_choice = Input.choose_option
+
+    if LanguageSelector.validate(language_choice)
+      locale = LanguageSelector.record(language_choice)
+      @console.switch_language(locale)
+    else
+      @console.menu_error
+      choose_language
+    end
+  end
 
   def choose_players
     player_choice = Input.choose_option
@@ -59,13 +75,13 @@ class ConfigSelector
     marker_choice = Input.choose
 
     if MarkerSelector.wrong_length(marker_choice)
-      @console.output('Markers must be one single character. Please try again:')
+      @console.marker_error('length')
       choose_marker(selected_markers)
     elsif MarkerSelector.number(marker_choice)
-      @console.output('Marker cannot be a number. Please try again:')
+      @console.marker_error('number')
       choose_marker(selected_markers)
     elsif MarkerSelector.duplicate(selected_markers, marker_choice)
-      @console.output('Marker has already been selected. Please try again:')
+      @console.marker_error('duplicate')
       choose_marker(selected_markers)
     else
       marker_choice
@@ -84,10 +100,10 @@ class ConfigSelector
   end
 
   def choose_board
-    order_choice = Input.choose_option
+    board_choice = Input.choose_option
 
-    if BoardSelector.validate(order_choice)
-      BoardSelector.record(order_choice)
+    if BoardSelector.validate(board_choice)
+      BoardSelector.record(board_choice)
     else
       @console.menu_error
       choose_board
