@@ -27,7 +27,7 @@ describe MainConsole do
         @console.welcome
         output = $stdout.string.split("\n")
 
-        expect(output).to include("Welcome to TIC TAC TOE", "Select game options:")
+        expect(output).to include('Welcome to TIC TAC TOE', 'Select game options:')
       end
     end
 
@@ -72,13 +72,17 @@ describe MainConsole do
     end
 
     describe '.player_menu' do
-      it 'should display the player menu' do
+      before do
         @console.player_menu
-        output = $stdout.string.split("\n")
-        expect(output).to include('Who would you like to play against?')
+        @output = $stdout.string.split("\n")
+      end
+
+      it 'should display the player menu' do
+        expect(@output).to include('Who would you like to play against?')
       end
 
       it 'should translate the player options for the selected locale' do
+        expect(@output).to include('1 - Another player', '2 - Computer')
       end
     end
 
@@ -146,7 +150,7 @@ describe MainConsole do
         @console.welcome
         output = $stdout.string.split("\n")
 
-        expect(output).to include("Bienvenido a TIC TAC TOE", "Seleccionar opciones de juego:")
+        expect(output).to include('Bienvenido a TIC TAC TOE', 'Seleccionar opciones de juego:')
       end
     end
 
@@ -191,13 +195,17 @@ describe MainConsole do
     end
 
     describe '.player_menu' do
-      it 'should translate the player menu' do
+      before do
         @console.player_menu
-        output = $stdout.string.split("\n")
-        expect(output).to include('¿Contra quién te gustaría jugar?')
+        @output = $stdout.string.split("\n")
+      end
+
+      it 'should display the player menu' do
+        expect(@output).to include('¿Contra quién te gustaría jugar?')
       end
 
       it 'should translate the player options for the selected locale' do
+        expect(@output).to include('1 - Otro jugador', '2 - Computadora')
       end
     end
 
@@ -266,7 +274,7 @@ describe MainConsole do
         @console.welcome
         output = $stdout.string.split("\n")
 
-        expect(output).to include("TIC TAC TOE에 오신 것을 환영합니다", "게임 옵션 선택:")
+        expect(output).to include('TIC TAC TOE에 오신 것을 환영합니다', '게임 옵션 선택:')
       end
     end
 
@@ -311,13 +319,17 @@ describe MainConsole do
     end
 
     describe '.player_menu' do
-      it 'should translate the player menu' do
+      before do
         @console.player_menu
-        output = $stdout.string.split("\n")
-        expect(output).to include('누구와 경기하고 싶습니까?')
+        @output = $stdout.string.split("\n")
+      end
+
+      it 'should display the player menu' do
+        expect(@output).to include('누구와 경기하고 싶습니까?')
       end
 
       it 'should translate the player options for the selected locale' do
+        expect(@output).to include('1 - 또 다른 선수', '2 - 컴퓨터')
       end
     end
 

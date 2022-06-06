@@ -13,7 +13,7 @@ class GameConsole < Console
     name1 = translate(player1.name)
     name2 = translate(player2.name)
     instructions_msg = translate('instructions', board_size: @board_size, line_length: @line_length,
-                                              name1:, marker1: player1.marker, name2:, marker2: player2.marker)
+                                                 name1:, marker1: player1.marker, name2:, marker2: player2.marker)
     output(instructions_msg)
   end
 

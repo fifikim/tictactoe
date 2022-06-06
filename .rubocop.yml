@@ -30,6 +30,7 @@ Metrics/BlockLength:
     - ./spec/game_console_spec.rb
     - ./spec/main_console_spec.rb
     - ./spec/board_mocker_spec.rb
+    - ./spec/translator_spec.rb
 Layout/LineLength:
   Exclude: 
     - ./spec/console_spec.rb

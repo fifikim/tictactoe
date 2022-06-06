@@ -63,6 +63,7 @@ class MainConsole < Console
   end
 
   private
+
   def list_options(option_type)
     option_type.map.with_index do |(key, _value), index|
       "#{index + 1} - #{translate(key)}\n"
@@ -70,19 +71,19 @@ class MainConsole < Console
   end
 
   def language_types
-    "#{list_options(LanguageSelector::LANGUAGE_OPTIONS)}"
+    list_options(LanguageSelector::LANGUAGE_OPTIONS).to_s
   end
 
   def player_types
-    "#{list_options(PlayerSelector::PLAYER_OPTIONS)}"
+    list_options(PlayerSelector::PLAYER_OPTIONS).to_s
   end
 
   def board_types
-    "#{list_options(BoardSelector::BOARD_OPTIONS)}"
+    list_options(BoardSelector::BOARD_OPTIONS).to_s
   end
 
   def order_types(unordered_players)
     "1 - #{translate(unordered_players[0].name)}\n" \
-    "2 - #{translate(unordered_players[1].name)}\n"
+      "2 - #{translate(unordered_players[1].name)}\n"
   end
 end

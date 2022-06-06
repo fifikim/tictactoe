@@ -45,7 +45,7 @@ describe Translator do
         @translator.switch_locale(:es)
         message = @translator.translate('test')
 
-        expect(message).to eq("esto es una prueba")
+        expect(message).to eq('esto es una prueba')
       end
     end
 
@@ -54,7 +54,7 @@ describe Translator do
         @translator.switch_locale(:ko)
         message = @translator.translate('test')
 
-        expect(message).to eq("이것은 시험이다")
+        expect(message).to eq('이것은 시험이다')
       end
     end
   end

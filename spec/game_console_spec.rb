@@ -10,7 +10,7 @@ describe GameConsole do
     @console = GameConsole.new
     $stdout = StringIO.new
   end
-  
+
   context 'when locale is :en (English)' do
     before do
       @console.switch_language(:en)
@@ -44,7 +44,7 @@ describe GameConsole do
       @console.win(player)
       output = $stdout.string.split("\n")
 
-      expect(output).to include("Game over! Player 1 wins!")
+      expect(output).to include('Game over! Player 1 wins!')
     end
 
     it 'should display the Game Drawn message' do
@@ -53,7 +53,6 @@ describe GameConsole do
 
       expect(output).to include("Game over! It's a draw!")
     end
-
 
     context 'when the board is 3x3' do
       before do
@@ -173,7 +172,7 @@ describe GameConsole do
       @console.turn(turn_message, player)
       output = $stdout.string.split("\n")
 
-      expect(output).to include("Movimiento de Jugador 1:")
+      expect(output).to include('Movimiento de Jugador 1:')
     end
 
     it 'should translate the Occupied Space error message' do
@@ -188,14 +187,14 @@ describe GameConsole do
       @console.win(winner)
       output = $stdout.string.split("\n")
 
-      expect(output).to include("¡Juego terminado! ¡Jugador 1 gana!")
+      expect(output).to include('¡Juego terminado! ¡Jugador 1 gana!')
     end
 
     it 'should translate the Game Drawn message' do
       @console.draw
       output = $stdout.string.split("\n")
 
-      expect(output).to include("¡Juego terminado! ¡Es un empate!")
+      expect(output).to include('¡Juego terminado! ¡Es un empate!')
     end
 
     context 'when the board is 3x3' do
@@ -319,7 +318,7 @@ describe GameConsole do
       @console.turn(turn_message, player)
       output = $stdout.string.split("\n")
 
-      expect(output).to include("플레이어 1의 움직임:")
+      expect(output).to include('플레이어 1의 움직임:')
     end
 
     it 'should translate the Occupied Space error message' do
@@ -334,14 +333,14 @@ describe GameConsole do
       @console.win(winner)
       output = $stdout.string.split("\n")
 
-      expect(output).to include("게임 끝! 플레이어 1가 이겼습니다!")
+      expect(output).to include('게임 끝! 플레이어 1가 이겼습니다!')
     end
 
     it 'should translate the Game Drawn message' do
       @console.draw
       output = $stdout.string.split("\n")
 
-      expect(output).to include("게임 끝! 무승부입니다!")
+      expect(output).to include('게임 끝! 무승부입니다!')
     end
 
     context 'when the board is 3x3' do
