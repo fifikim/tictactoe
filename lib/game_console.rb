@@ -9,13 +9,15 @@ class GameConsole < Console
     @line_length = Math.sqrt(board_size).to_i
   end
 
+  # rubocop:disable Layout/LineLength
   def instructions(player1, player2)
-    name1 = translate(player1.name)
-    name2 = translate(player2.name)
+    player_name1 = translate(player1.name)
+    player_name2 = translate(player2.name)
     instructions_msg = translate('instructions', board_size: @board_size, line_length: @line_length,
-                                                 name1:, marker1: player1.marker, name2:, marker2: player2.marker)
+                                                 name1: player_name1, marker1: player1.marker, name2: player_name2, marker2: player2.marker)
     output(instructions_msg)
   end
+  # rubocop:enable Layout/LineLength
 
   def board(current_board)
     board_output = fill_template(current_board.spaces)
