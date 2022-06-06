@@ -5,7 +5,6 @@ require_relative 'translator'
 require_relative 'language_selector'
 require_relative 'board_selector'
 require_relative 'player_selector'
-require 'i18n'
 
 class MainConsole < Console
   def welcome
@@ -15,7 +14,7 @@ class MainConsole < Console
 
   def marker_prompt(player)
     player_name = translate(player.name)
-    marker_prompt = I18n.t('prompt.marker', player: player_name)
+    marker_prompt = translate('prompt.marker', player: player_name)
     output(marker_prompt)
   end
 

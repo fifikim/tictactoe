@@ -18,7 +18,7 @@ class Translator
     @translator.locale = locale
   end
 
-  def translate(message_key)
-    @translator.t(message_key)
+  def translate(message_key, **params)
+    @translator.t(message_key, **params)
   end
 end

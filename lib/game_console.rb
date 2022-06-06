@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'console'
-require 'i18n'
 
 class GameConsole < Console
   def initialize(board_size = 9)
@@ -13,7 +12,7 @@ class GameConsole < Console
   def instructions(player1, player2)
     name1 = translate(player1.name)
     name2 = translate(player2.name)
-    instructions_msg = I18n.t('instructions', board_size: @board_size, line_length: @line_length,
+    instructions_msg = translate('instructions', board_size: @board_size, line_length: @line_length,
                                               name1:, marker1: player1.marker, name2:, marker2: player2.marker)
     output(instructions_msg)
   end
@@ -24,13 +23,13 @@ class GameConsole < Console
   end
 
   def invalid
-    msg = I18n.t('error.character', board_size: @board_size)
+    msg = translate('error.character', board_size: @board_size)
     output(msg)
   end
 
   def turn(turn_message, player)
     player_name = translate(player)
-    turn_msg = I18n.t(turn_message, player: player_name)
+    turn_msg = translate(turn_message, player: player_name)
     output(turn_msg)
   end
 
@@ -41,7 +40,7 @@ class GameConsole < Console
 
   def win(player)
     player_name = translate(player)
-    win_msg = I18n.t('won', winner: player_name)
+    win_msg = translate('won', winner: player_name)
     output(win_msg)
   end
 

@@ -11,8 +11,8 @@ class Console
     @translator.switch_locale(language_sym)
   end
 
-  def translate(message_key)
-    @translator.translate(message_key)
+  def translate(message_key, **params)
+    @translator.translate(message_key, **params)
   end
 
   def output(message)
