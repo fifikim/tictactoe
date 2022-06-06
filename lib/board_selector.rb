@@ -2,9 +2,9 @@
 
 class BoardSelector
   BOARD_OPTIONS = [
-    ['3x3', 9],
-    ['4x4', 16],
-    ['5x5', 25]
+    ['board.3x3', 9],
+    ['board.4x4', 16],
+    ['board.5x5', 25]
   ].freeze
 
   def self.validate(selection)

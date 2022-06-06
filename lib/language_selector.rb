@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require_relative 'translator'
+
 class LanguageSelector
   LANGUAGE_OPTIONS = [
-    ['English', 'en'],
-    ['Spanish', 'es'],
-    ['Korean', 'ko']
+    ['language.en', :en],
+    ['language.es', :es],
+    ['language.ko', :ko]
   ].freeze
 
   def self.validate(selection)

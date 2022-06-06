@@ -1,0 +1,52 @@
+es:
+  test: "esto es una prueba"
+
+  welcome: "Bienvenido a TIC TAC TOE\n\nSeleccionar opciones de juego:\n"
+
+  language:
+    en: 'Inglés'
+    es: 'Español'
+    ko: 'Coreano'
+
+  error:
+    menu: '¡Selección invalida! Elija entre los números enumerados anteriormente.'
+    character: "¡Carácter no válido! Seleccione un número entero entre 1 y %{board_size}:"
+    occupied: '¡Movimiento inválido! Seleccione un espacio libre:'
+    marker:
+      length: 'Los marcadores deben ser un solo carácter. Inténtalo de nuevo:'
+      number: 'Un marcador no puede ser un número. Inténtalo de nuevo:'
+      duplicate: 'Este marcador ya ha sido seleccionado. Inténtalo de nuevo:'
+
+  prompt:
+    language: "\nSeleccione su idioma:\n"
+    player: "\n¿Contra quién te gustaría jugar?\n"
+    marker: "\nSelecciona un marcador para %{player}:"
+    board: "\n¿Qué tamaño de tabla te gustaría?\n"
+    order: "\n¿Quién debe tomar el primer turno?\n"
+
+  opponent:
+    human: 'Otro jugador'
+    easy_ai: 'Computadora'
+
+  player:
+    human1: 'Jugador 1'
+    human2: 'Jugador 2'
+    easy_ai: 'Jugador 1 (Computadora)'
+  
+  board:
+    3x3: '3x3'
+    4x4: '4x4'
+    5x5: '5x5'
+
+  instructions: "Instrucciones:\nIngresa el número (1-%{board_size}) del espacio en el tablero donde deseas mover.\n%{name1} se mueve primero y marca sus espacios con un \"%{marker1}\". %{name2} marca con un \"%{marker2}\".\nPara ganar, reclama %{line_length} espacios adyacentes en una línea horizontal, vertical o diagonal.\nSi no hay espacios libres y ningún jugador ha ganado, el juego terminará en empate.\n\n"
+
+  new_game: "\nComenzando nuevo juego...\n\n"
+
+  turn: 
+    human: "Movimiento de %{player}:"
+    easy_ai: "%{player} está procesando su movimiento..."
+
+  won: "¡Juego terminado! ¡%{winner} gana!"
+  draw: "¡Juego terminado! ¡Es un empate!"
+
+  goodbye: '¡Gracias por jugar! Adiós.'

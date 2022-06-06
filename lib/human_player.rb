@@ -9,6 +9,6 @@ class HumanPlayer < Player
   end
 
   def turn_message
-    "#{@name}'s move:"
+    'turn.human'
   end
 end

@@ -1,0 +1,52 @@
+en:
+  test: "this is a test"
+
+  welcome: "Welcome to TIC TAC TOE\n\nSelect game options:\n"
+
+  language:
+    en: 'English'
+    es: 'Spanish'
+    ko: 'Korean'
+
+  error:
+    menu: 'Invalid selection! Please choose from the numbers listed above.'
+    character: "Invalid character! Please select an integer from 1-%{board_size}:"
+    occupied: 'Invalid move! Please select a free space:'
+    marker:
+      length: 'Markers must be one single character. Please try again:'
+      number: 'A marker cannot be a number. Please try again:'
+      duplicate: 'This marker has already been selected. Please try again:'
+
+  prompt:
+    language: "\nPlease select your language:\n"
+    player: "\nWho would you like to play against?\n"
+    marker: "\nSelect a marker for %{player}:"
+    board: "\nWhat size board would you like?\n"
+    order: "\nWho should take the first turn?\n"
+
+  opponent:
+    human: 'Another player'
+    easy_ai: 'Computer'
+
+  player:
+    human1: 'Player 1'
+    human2: 'Player 2'
+    easy_ai: 'Player 1 (Computer)'
+
+  board:
+    3x3: '3x3'
+    4x4: '4x4'
+    5x5: '5x5'
+
+  instructions: "Instructions:\nEnter the number (1-%{board_size}) of the space on the board where you want to move.\n%{name1} moves first and marks their spaces with an \"%{marker1}\". %{name2} marks with an \"%{marker2}\".\nTo win, claim %{line_length} adjacent spaces in a horizontal, vertical, or diagonal line.\nIf there are no free spaces and no player has won, the game will end in a draw.\n\n"
+
+  new_game: "\nStarting new game...\n\n"
+
+  turn: 
+    human: "%{player}'s move:"
+    easy_ai: "%{player} is processing its move..."
+
+  won: "Game over! %{winner} wins!"
+  draw: "Game over! It's a draw!"
+
+  goodbye: 'Thanks for playing! Goodbye.'

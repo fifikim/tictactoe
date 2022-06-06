@@ -1,0 +1,52 @@
+ko:
+  test: "이것은 시험이다"
+
+  welcome: "TIC TAC TOE에 오신 것을 환영합니다\n\n게임 옵션 선택:\n"
+
+  language:
+    en: '영어'
+    es: '스페인의'
+    ko: '한국어'
+
+  error:
+    menu: '잘못된 선택! 위에 나열된 번호 중에서 선택하십시오.'
+    character: "잘못된 문자입니다. 1-%{board_size}에서 정수를 선택하세요."
+    occupied: '잘못된 움직임! 여유 공간을 선택하십시오:'
+    marker:
+      length: '마커는 하나의 단일 문자여야 합니다. 다시 시도하십시오:'
+      number: '마커는 숫자가 될 수 없습니다. 다시 시도하십시오:'
+      duplicate: '이 마커는 이미 선택되었습니다. 다시 시도하십시오:'
+
+  prompt:
+    language: "\n언어를 선택하세요:\n"
+    player: "\n누구와 경기하고 싶습니까?\n"
+    marker: "\n%{player}의 마커 선택:"
+    board: "\n어떤 크기의 보드를 원하십니까?\n"
+    order: "\n누가 먼저 턴을 해야 할까요?\n"
+
+  opponent:
+    human: '또 다른 선수'
+    easy_ai: '컴퓨터'
+
+  player:
+    human1: '플레이어 1'
+    human2: '플레이어 2'
+    easy_ai: '플레이어 1 (컴퓨터)'
+  
+  board:
+    3x3: '3x3'
+    4x4: '4x4'
+    5x5: '5x5'
+
+  instructions: "지침:\n이동하려는 보드의 공간 번호(1-%{board_size})를 입력하세요.\n%{name1}이(가) 먼저 이동하고 해당 공간을 \"%{marker1}\"로 표시합니다. %{name2}은(는) \"%{marker2}\"로 표시합니다.\n이기려면 가로, 세로 또는 대각선으로 %{line_length}개의 인접 공간을 차지하세요.\n여유 공간이 없고 승리한 플레이어가 없는 경우, 게임은 무승부로 끝납니다.\n\n"
+
+  new_game: "\n새 게임 시작 중...\n\n"
+
+  turn: 
+    human: "%{player}의 움직임:"
+    easy_ai: "%{player}가 이동을 처리 중입니다..."
+
+  won: "게임 끝! %{winner}가 이겼습니다!"
+  draw: "게임 끝! 무승부입니다!"
+
+  goodbye: '놀아줘서 고마워! 안녕.'

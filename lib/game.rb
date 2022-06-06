@@ -6,6 +6,8 @@ class Game
   attr_accessor :board, :board_size, :current_player, :next_player, :markers, :win_finder, :console, :game_over
 
   def play
+    @console.instructions(@current_player, @next_player)
+
     take_turn until @game_over
   end
 
@@ -17,7 +19,7 @@ class Game
 
   def take_turn
     @console.board(@board)
-    @console.output(@current_player.turn_message)
+    @console.turn(@current_player.turn_message, @current_player.name)
     select_space
     check_over
   end
@@ -26,10 +28,10 @@ class Game
     input = @current_player.select(@board, @markers)
 
     if InputValidator.invalid_selection?(@board_size, input)
-      @console.invalid_message
+      @console.invalid
       select_space
     elsif @board.occupied_space?(input, @markers)
-      @console.output('Invalid move! Please select a free space:')
+      @console.occupied
       select_space
     else
       @board.record_move(@current_player.marker, input)
@@ -39,10 +41,10 @@ class Game
   def check_over
     if @win_finder.game_won?(@board.spaces, @current_player.marker)
       end_game
-      @console.output("Game over! #{@current_player.name} wins!")
+      @console.win(@current_player.name)
     elsif @board.full?(@markers)
       end_game
-      @console.output("Game over! It's a draw!")
+      @console.draw
     else
       switch_player
     end

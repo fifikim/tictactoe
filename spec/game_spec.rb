@@ -9,7 +9,7 @@ require 'stringio'
 describe Game do
   before do
     @board_size = 9
-    @players = Players.new([HumanPlayer.new('Player 1', 'X'), HumanPlayer.new('Player 2', 'O')])
+    @players = Players.new([HumanPlayer.new('player.human1', 'X'), HumanPlayer.new('player.human2', 'O')])
     $stdout = StringIO.new
   end
 

@@ -5,8 +5,8 @@ require_relative 'easy_ai_player'
 
 class PlayerSelector
   PLAYER_OPTIONS = [
-    ['Another player', [HumanPlayer.new('Player 1'), HumanPlayer.new('Player 2')]],
-    ['Computer', [EasyAiPlayer.new('Player 1 (Computer)'), HumanPlayer.new('Player 2')]]
+    ['opponent.human', [HumanPlayer.new('player.human1'), HumanPlayer.new('player.human2')]],
+    ['opponent.easy_ai', [EasyAiPlayer.new('player.easy_ai'), HumanPlayer.new('player.human2')]]
   ].freeze
 
   def self.validate(selection)

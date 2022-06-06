@@ -8,6 +8,6 @@ class EasyAiPlayer < Player
   end
 
   def turn_message
-    "#{@name} is processing its move..."
+    'turn.easy_ai'
   end
 end

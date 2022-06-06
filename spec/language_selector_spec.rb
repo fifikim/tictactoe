@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'language_selector'
+require 'i18n'
 
 describe LanguageSelector do
   describe '.validate' do
@@ -25,28 +26,28 @@ describe LanguageSelector do
   end
 
   describe '.record' do
-    context "when '1' is selected" do
-      it 'returns locale symbol for English' do
+    context "when '1' (index 0) is selected" do
+      it 'returns the locale symbol for English (:en)' do
         selection = 0
-        locale = LanguageSelector.record(selection).to_sym
+        locale = LanguageSelector.record(selection)
 
         expect(locale).to eq(:en)
       end
     end
 
-    context "when '2' is selected" do
-      it 'returns locale symbol for Spanish' do
+    context "when '2' (index 1) is selected" do
+      it 'returns the locale symbol for Spanish (:es)' do
         selection = 1
-        locale = LanguageSelector.record(selection).to_sym
+        locale = LanguageSelector.record(selection)
 
         expect(locale).to eq(:es)
       end
     end
 
-    context "when '3' is selected" do
-      it 'returns locale symbol for Korean' do
+    context "when '3' (index 2) is selected" do
+      it 'returns the locale symbol for Korean (:ko)' do
         selection = 2
-        locale = LanguageSelector.record(selection).to_sym
+        locale = LanguageSelector.record(selection)
 
         expect(locale).to eq(:ko)
       end
